@@ -12,7 +12,7 @@ file(GLOB allFiles
 )
 
 add_executable(VisualizedPathfinding ${allFiles})
-target_include_directories(VisualizedPathfinding PUBLIC ${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World)
+target_include_directories(VisualizedPathfinding PUBLIC ${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World ${PROJECT_SOURCE_DIR}/src/Algorithm)
 #find_package(SFML 2 REQUIRED graphics window system)
 
 include(FetchContent)

@@ -9,7 +9,7 @@ The output was:
 Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 04/06/2022 18:56:59.
+Build started 04/06/2022 19:27:27.
 Project "C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\3.22.22022201-MSVC_2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -35,7 +35,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.44
+Time Elapsed 00:00:00.45
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -54,7 +54,7 @@ The output was:
 Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 04/06/2022 18:57:00.
+Build started 04/06/2022 19:27:28.
 Project "C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\3.22.22022201-MSVC_2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -80,7 +80,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.38
+Time Elapsed 00:00:00.35
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -92,84 +92,84 @@ The CXX compiler identification is MSVC, found in "C:/Users/Julian/source/repos/
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_34b33.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_195f1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   CMakeCCompilerABI.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_34b33.dir\Debug\\" /Fd"cmTC_34b33.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c"
-  cmTC_34b33.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_34b33.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_195f1.dir\Debug\\" /Fd"cmTC_195f1.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.22\Modules\CMakeCCompilerABI.c"
+  cmTC_195f1.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_195f1.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_14d3b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_e7689.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   CMakeCXXCompilerABI.cpp
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_14d3b.dir\Debug\\" /Fd"cmTC_14d3b.dir\Debug\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_14d3b.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_14d3b.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e7689.dir\Debug\\" /Fd"cmTC_e7689.dir\Debug\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.22\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_e7689.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_e7689.exe
 
 
 
 Determining if the include file sys/types.h exists passed with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_4539e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_9bf03.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   CheckIncludeFile.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4539e.dir\Debug\\" /Fd"cmTC_4539e.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-  cmTC_4539e.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_4539e.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9bf03.dir\Debug\\" /Fd"cmTC_9bf03.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+  cmTC_9bf03.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_9bf03.exe
 
 
 
 Determining if the include file stdint.h exists passed with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_31b38.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_bfe48.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   CheckIncludeFile.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_31b38.dir\Debug\\" /Fd"cmTC_31b38.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-  cmTC_31b38.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_31b38.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bfe48.dir\Debug\\" /Fd"cmTC_bfe48.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+  cmTC_bfe48.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_bfe48.exe
 
 
 
 Determining if the include file stddef.h exists passed with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_cb255.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_5980e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   CheckIncludeFile.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_cb255.dir\Debug\\" /Fd"cmTC_cb255.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
-  cmTC_cb255.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_cb255.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5980e.dir\Debug\\" /Fd"cmTC_5980e.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c
+  cmTC_5980e.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_5980e.exe
 
 
 
 Determining size of void* passed with the following output:
 Change Dir: C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_896cb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_320c3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && Microsoft (R) Build Engine version 17.1.0+ae57d105c for .NET Framework
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) C/C++ Optimizing Compiler Version 19.31.31107 for x64
   SIZEOF_VOID_PTR.c
   Copyright (C) Microsoft Corporation.  All rights reserved.
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_896cb.dir\Debug\\" /Fd"cmTC_896cb.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CheckTypeSize\SIZEOF_VOID_PTR.c
-  cmTC_896cb.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_896cb.exe
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_320c3.dir\Debug\\" /Fd"cmTC_320c3.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CheckTypeSize\SIZEOF_VOID_PTR.c
+  cmTC_320c3.vcxproj -> C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\CMakeFiles\CMakeTmp\Debug\cmTC_320c3.exe
 
 
 
