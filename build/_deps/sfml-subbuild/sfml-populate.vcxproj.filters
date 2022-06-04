@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\ed3cf482d8685a67682db724375699a4\sfml-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\a547a50c8e7cb3996a9c79d79331792e\sfml-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\cf4afa2b802d000ca4fa82b3a4f230aa\sfml-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\build\_deps\sfml-subbuild\CMakeFiles\sfml-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B22B0C61-D503-3DBA-B710-70AF7DA1D8D9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

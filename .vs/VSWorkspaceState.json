@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\out\\build",
     "\\src",
     "\\src\\Events",
     "\\src\\Rendering",
     "\\src\\World"
   ],
-  "SelectedNode": "\\src\\Rendering\\VsRenderer.cpp",
   "PreviewInSolutionExplorer": false
 }
