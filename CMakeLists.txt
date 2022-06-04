@@ -13,9 +13,16 @@ file(GLOB allFiles
 
 add_executable(VisualizedPathfinding ${allFiles})
 target_include_directories(VisualizedPathfinding PUBLIC ${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World)
+#find_package(SFML 2 REQUIRED graphics window system)
 
-find_package(SFML 2 REQUIRED graphics window system)
-
+include(FetchContent)
+set(BUILD_SHARED_LIBS OFF)
+FetchContent_Declare(
+ SFML
+ GIT_REPOSITORY https://github.com/SFML/SFML.git
+ GIT_TAG 2.5.1
+)
+FetchContent_MakeAvailable(SFML)
 include_directories(${SFML_INCLUDE_DIR})
 target_link_libraries(VisualizedPathfinding sfml-graphics sfml-window sfml-system)
 
