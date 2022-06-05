@@ -1,60 +1,11 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <chrono>
 using namespace std;
+
+#include "GraphNode.hpp"
 #include "Grid.hpp"
-
-struct GraphNode {
-public:
-    //Constructor if you do not want to input the average neighbour count (consumes more memory and
-    // can be slower  for graphs with many unusable nodes)
-    GraphNode(int x, int y, int indexInGraph) {
-        this->x = x;
-        this->y = y;
-        this->indexInGraph = indexInGraph;
-        //in most graphs, most nodes will have around and maximally 8 neighbours. 
-        neighbours.reserve(8);
-        neighbourCosts.reserve(8);
-    }
-    //Constructor if you want to input the average neighbour count (consumes less memory and can be faster 
-    //for graphs with many unusable nodes)
-    GraphNode(int x, int y, int neighbourCountMean, int indexInGraph) {
-        this->x = x;
-        this->y = y;
-        this->indexInGraph = indexInGraph;
-        //in most graphs, most nodes will have around and maximally 8 neighbours. 
-        neighbours.reserve(neighbourCountMean);
-        neighbourCosts.reserve(neighbourCountMean);
-    }
-
-    inline void addNeighbour(GraphNode* node, int cost) {
-        neighbours.push_back(node);
-        neighbourCosts.push_back(cost);
-    }
-
-
-    inline void reset() {
-        indexInGraph = -1;
-        heapIndex = -1;
-        distanceTravelled = 0;
-        previousNode = nullptr;
-        usedByMoveable = false;
-    }
-
-public:
-    int x;
-    int y;
-    vector<GraphNode*> neighbours;
-    vector<int> neighbourCosts;
-
-    //for actual algorithm
-    int indexInGraph = -1;
-    int heapIndex = -1;
-    bool usedByMoveable = false;
-
-    int distanceTravelled = 0;
-    GraphNode* previousNode;
-};
 
 class Graph {
 private:
@@ -91,14 +42,13 @@ public:
         nodes.reserve(useableNodeCount);
         //calculate how much memory has to be reserved for every node's neighbours on average
         int neighbourCountMean = 8 * ((float)useableNodeCount / nodeCount);
-
-        for(int x = 0; x < this->width; x ++) {
-            for(int y = 0; y < this->height; y ++) {
-                int nodeIndex = y * this->height + x;
+        for(int y = 0; y < this->height; y ++) {
+            for(int x = 0; x < this->width; x ++) {
+                int nodeIndex = x + y * this->width;
                 //Current definition of a useable node: it is white in the grid object
                 bool isUseable = grid.getPixel(x, y) == sf::Color::White;
                 if(isUseable) {
-                    GraphNode* cNode = new GraphNode(x, y, neighbourCountMean, nodes.size());
+                    GraphNode* cNode = new GraphNode(x, y, neighbourCountMean, nodes.size(), nodeIndex);
                     //only put node into array if useable, else nullptr
                     fullGraph[nodeIndex] = cNode;
                     //We want to create a full array of the useable nodes so we do not have to loop over gNodes after creating the graph
@@ -131,8 +81,7 @@ public:
         GraphNode* node = fullGraph[y * width + x];
         #if DEBUG
         if(node == nullptr) {
-            std::cout << "Error in 'getIndexFromCoords': GraphNode at
-                coordinates x = " << x << ", y = " << y << " does not exist.\n";
+            std::cout << "Error in 'getIndexFromCoords': GraphNode at coordinates x = " << x << ", y = " << y << " does not exist.\n";
                 std::exit(0);
         }
         #endif
@@ -142,14 +91,14 @@ public:
 
 private:
     inline void linkNeighbours(GraphNode* node) {
-        int nodeIndex = node->indexInGraph;
-        if(nodeIndex - 1 >= 0) {
+        int nodeIndex = node->indexInFullGraph;
+        if(node->x > 0 && nodeIndex - 1 >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - 1]);//left
         }
         if(nodeIndex - width >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - width]);//top
         }
-        if(nodeIndex - width - 1 >= 0) {
+        if(node->x > 0 && nodeIndex - width - 1 >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - width - 1]);//top left
         }
     }

@@ -2,10 +2,9 @@
 #include "BinaryHeap.hpp"
 
 
-	BinaryHeap::BinaryHeap(shared_ptr<Graph> graphNodes, int graphNodeCount, int currentIteration) {
+	BinaryHeap::BinaryHeap(vector<GraphNode*>& graphNodes, int currentIteration) {
 		//heap has same size as graph
 		graph = graphNodes;
-		//heap = vector<shared_ptr<HeapNode>>(graphNodeCount);
 		this->currentIteration = currentIteration;
 	}
 
@@ -15,17 +14,18 @@
 
 	void BinaryHeap::actualizeGraphIndex(int indexInHeap) {
 		int graphIndex = heap[indexInHeap]->getIndexInGraph(currentIteration);
-		graph->setHeapIndex(graphIndex, indexInHeap);
+		graph[graphIndex]->heapIndex = indexInHeap;
 	}
 
 	void BinaryHeap::dontReinsert(int indexInHeap) {
 		int graphIndex = heap[indexInHeap]->getIndexInGraph(currentIteration);
-		graph->setHeapIndex(graphIndex, -2);
+		graph[graphIndex]->heapIndex = -2;
 	}
 	//-------------------------------------------
 	//Heap methods
 
-	void BinaryHeap::insert(shared_ptr<HeapNode> node) {
+	void BinaryHeap::insert(int heuristic, int graphIndex) {
+		HeapNode* node = new HeapNode(heuristic, graphIndex);
 		int tempSize = heap.size();
 		heap.push_back(node);
 		actualizeGraphIndex(tempSize);
@@ -34,6 +34,7 @@
 
 	HeapNode BinaryHeap::extractMin() {
 		HeapNode copy = *heap[0];
+		//delete heap[0];
 		//overwrite with last leaf of heap
 		dontReinsert(0);
 		if (heap.size() > 1) {
@@ -97,9 +98,9 @@
 			return;
 		}
 		int tempParentIndex = getParentIndex(indexOfNodeInHeap);
-		shared_ptr<HeapNode> parent = heap[tempParentIndex];
+		HeapNode* parent = heap[tempParentIndex];
 		int tempIndex = indexOfNodeInHeap;
-		shared_ptr<HeapNode> tempNode = heap[indexOfNodeInHeap];
+		HeapNode* tempNode = heap[indexOfNodeInHeap];
 
 		while (isRoot(tempIndex) == false && parent->getKey() > tempNode->getKey()) {
 			//swap node and parent
@@ -117,10 +118,10 @@
 
 	void BinaryHeap::bubbleDown(int indexOfNodeInHeap) {
 		int tempChildIndex;
-		shared_ptr<HeapNode> tempChild;
+		HeapNode* tempChild;
 
 		int tempIndex = indexOfNodeInHeap;
-		shared_ptr<HeapNode> tempNode = heap[indexOfNodeInHeap];
+		HeapNode* tempNode = heap[indexOfNodeInHeap];
 
 		while (isLeaf(tempIndex) == false) {
 

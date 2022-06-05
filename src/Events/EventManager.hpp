@@ -39,14 +39,17 @@ public:
     }
 
     void init() {
-
+        auto path = worldManager->findPath(0, 0, 50, 50);
+        worldManager->addPathToGrid(path);
     }
 
     void eventloop() {
         worldManager->update();
+
     }
 
     void drawingloop() {
         worldManager->draw(renderer);
+
     }
 };

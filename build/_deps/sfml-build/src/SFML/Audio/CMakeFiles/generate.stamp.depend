@@ -1,7 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.22/Modules/FindOpenAL.cmake
-C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.22/Modules/FindPackageMessage.cmake
-C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-src/cmake/Modules/FindFLAC.cmake
-C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-src/cmake/Modules/FindVorbis.cmake
-C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-src/src/SFML/Audio/CMakeLists.txt

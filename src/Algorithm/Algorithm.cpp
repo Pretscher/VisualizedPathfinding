@@ -2,24 +2,31 @@
 #include <cmath>
 #include <chrono>
 #include "Algorithm.hpp"
-#include <limits>
-#include "Renderer.hpp"
 
 
-bool Algorithm::findPath(vector<int>& o_pathYs, vector<int>& o_pathXs, int& o_pathLenght, int startY, int startX, int goalY, int goalX) {
+vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) {
 	nextIteration();
-	GraphNode* startNode = graph->getIndexFromCoords(startY, startX);
-	GraphNode* goalNode = graph->getIndexFromCoords(goalY, goalX);
+	GraphNode* startNode = graph->getIndexFromCoords(startX, startY);
+	GraphNode* goalNode = graph->getIndexFromCoords(goalX, goalY);
+
+	if(startNode == nullptr) {
+		std::cout << "The start node at coordinates x = " << startX << ", y = " << startY << " for A*-pathfinding is not existent or obstructed.\n";
+		return vector<Point>();
+	}
+	if(goalNode == nullptr) {
+		std::cout << "The goal node at coordinates x = " << goalX << ", y = " << goalY << " for A*-pathfinding is not existent or obstructed.\n";
+		return vector<Point>();
+	}
 
 	int graphNodeCount = graph->nodes.size();
-	BinaryHeap* heap = new BinaryHeap(graph, graphNodeCount, currentIteration);
+	BinaryHeap* heap = new BinaryHeap(graph->nodes, currentIteration);
 
 	graph->reset();
 
 	startNode->previousNode = startNode;
-
+	startNode->distanceTravelled = 0;
 	//insert start node with the value 0
-	heap->insert(shared_ptr<HeapNode>(new HeapNode(getHeuristic(startNode, goalNode), startNode->indexInGraph)));
+	heap->insert(getHeuristic(startNode, goalNode), startNode->indexInGraph);
 	bool foundPath = false;
 
 	while (heap->getCurrentNodeCount() > 0) {//while heap is not empty
@@ -50,7 +57,7 @@ bool Algorithm::findPath(vector<int>& o_pathYs, vector<int>& o_pathXs, int& o_pa
 							heap->decrease(cNeighbour->heapIndex, heuristicOfCurrentNeighbour);
 						}
 						else {
-							heap->insert(shared_ptr<HeapNode>(new HeapNode(heuristicOfCurrentNeighbour, cNeighbour->indexInGraph)));
+							heap->insert(heuristicOfCurrentNeighbour, cNeighbour->indexInGraph);
 						}
 					}
 				}
@@ -62,49 +69,19 @@ bool Algorithm::findPath(vector<int>& o_pathYs, vector<int>& o_pathXs, int& o_pa
 
 		//cout << "time elapsed sind the algorithm started: " << Utils::endTimerGetTime();
 
-		//get lenght of path array
-		int pathLenght = 0;//goal pos pushed back
-		GraphNode* cNode = goalNode;
-		while (true) {
-			cNode = cNode->previousNode;
-			pathLenght++;
-			if (cNode == startNode) {
-				break;
-			}
-		}
+		vector<Point> path = retrievePath(startNode, goalNode);
 
-		o_pathXs = vector<int>(pathLenght);
-		o_pathYs = vector<int>(pathLenght);
-		o_pathLenght = pathLenght;
-
-		//put path indices into path array from end to front
-
-		int indexInPath = pathLenght - 1;
-		GraphNode* cNode = goalNode;
-		while (true) {
-			o_pathXs[indexInPath] = cNode->x;
-			o_pathYs[indexInPath] = cNode->y;
-			cNode = cNode->previousNode;
-			indexInPath--;
-			if (cNode == startNode) {
-				break;
-			}
-		}
-
-
-		if (pathLenght == 0) {
+		if (path.size() == 0) {
 			cout << "\nNo path possible!-----------------------------------------------------\n\n\n";
 			delete heap;
-			return false;
+			return vector<Point>();
 		}
-		o_pathXs[pathLenght - 1] = goalX;//can now be written caus pathlenght is not 0
-		o_pathYs[pathLenght - 1] = goalY;
 		delete heap;
-		return true;
+		return path;
 	}
 	delete heap;
 	cout << "\nNo path possible!-----------------------------------------------------\n\n\n";
-	return false;
+	return vector<Point>();
 }
 
 float Algorithm::getHeuristic(GraphNode* start, GraphNode* goal) {
@@ -112,4 +89,23 @@ float Algorithm::getHeuristic(GraphNode* start, GraphNode* goal) {
 						  abs(goal->x - start->x) * abs(goal->x - start->x) 
 						+ abs(goal->y - start->y) * abs(goal->y - start->y));
 	return heuristics;
+}
+
+vector<Point> Algorithm::retrievePath(GraphNode* startNode, GraphNode* goalNode) {
+	int pathLenght = goalNode->distanceTravelled;
+	vector<Point> path;
+	path.resize(pathLenght);//can this be repalced by reserve()?
+	//put path indices into path array from end to front
+	GraphNode* cNode = goalNode;
+	while (true) {
+		path[pathLenght].x = cNode->x;
+		path[pathLenght].y = cNode->y;
+		pathLenght --;
+		cNode = cNode->previousNode;
+		if (cNode == startNode) {
+			break;
+		}
+	}
+	//we want the path to start at the start node, not the goal node
+	return path;
 }

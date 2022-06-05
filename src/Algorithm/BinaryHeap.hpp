@@ -6,11 +6,19 @@ class BinaryHeap {
 public:
 	//needs current iteration for efficiency: heap nodes are not deleted, but if they are reinserted into the heap and they were
 	//initialized in another run of the algorithm, they reinitialize themselves.
-	BinaryHeap(shared_ptr<Graph> graphNodes, int graphNodeCount, int currentIteration);
+	BinaryHeap(vector<GraphNode*>& graphNodes, int currentIteration);
+
+	~BinaryHeap() {
+		for(int i = 0; i < heap.size(); i++) {
+			delete heap[i];
+		}
+	}
+
 	int getCurrentNodeCount();
 	void actualizeGraphIndex(int indexInHeap);
 
-	void insert(shared_ptr<HeapNode> node);
+	void insert(int heuristic, int graphIndex);
+	//extract root of heap. Memory is managed internally so this returns a copy.
 	HeapNode extractMin();
 	void decrease(int heapIndex, float newKey);
 
@@ -26,7 +34,7 @@ public:
 	void bubbleDown(int indexOfNodeInHeap);
 	void dontReinsert(int indexInHeap);
 private:
-	vector<shared_ptr<HeapNode>> heap;
-	shared_ptr<Graph> graph;
+	vector<HeapNode*> heap;
+	vector<GraphNode*> graph;
 	int currentIteration;
 };

@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/cf4afa2b802d000ca4fa82b3a4f230aa/sfml-populate.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/a547a50c8e7cb3996a9c79d79331792e/sfml-populate-complete.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-build.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-configure.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-download.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-install.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-mkdir.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-patch.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-test.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test.rule"
 		},
 		{
-			"file" : "C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/ed3cf482d8685a67682db724375699a4/sfml-populate-update.rule"
+			"file" : "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update.rule"
 		}
 	],
 	"target" : 

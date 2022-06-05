@@ -2,33 +2,41 @@
 #include "Graph.hpp"
 #include <mutex>
 #include <memory>
+#include <vector>
+
+struct Point {
+public:
+	Point(int x, int y) {
+		this->x = x;
+		this->y = y;
+	}
+
+	Point() {}
+	int x, y;
+};
 
 class Algorithm {
 public:
-	Algorithm(shared_ptr<Graph> i_graph, shared_ptr<std::mutex> io_mutex) {
+	Algorithm(Graph* i_graph) {
 		this->graph = i_graph;
-		this->mutex = io_mutex;
 		this->currentIteration = -1;
 	}
 	
 	inline int getIteration() {
-		this->mutex->lock();
 		int iteration = this->currentIteration;
-		this->mutex->unlock();
 		return iteration;
 	}
 
 	inline void nextIteration() {
-		this->mutex->lock();
 		this->currentIteration ++;
-		this->mutex->unlock();
 	}
 
-	bool findPath(vector<int>& o_pathYs, vector<int>& o_pathXs, int& o_pathLenght, int startY, int startX, int goalY, int goalX);
+	vector<Point> findPath(int startX, int startY, int goalX, int goalY);
 private:
 
 	int currentIteration;//counts up with every pathfindings so that from outside the thread you can see if a pathfinding was completed
-	shared_ptr<std::mutex> mutex;
-	shared_ptr<Graph> graph;
+	Graph* graph;
 	inline float getHeuristic(GraphNode* start, GraphNode* goal);
+
+	vector<Point> retrievePath(GraphNode* startNode, GraphNode* goalNode);
 };
