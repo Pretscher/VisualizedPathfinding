@@ -1,3 +1,0 @@
-/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate.dir
-/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/edit_cache.dir
-/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/_deps/sfml-subbuild/CMakeFiles/rebuild_cache.dir

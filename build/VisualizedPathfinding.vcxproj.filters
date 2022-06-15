@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Algorithm\Algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Algorithm\BinaryHeap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Events\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Rendering\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Rendering\VsRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Algorithm\Algorithm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Algorithm\BinaryHeap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Algorithm\HeapNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Events\EventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Rendering\Renderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\Rendering\VsRenderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\World\Graph.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\World\GraphNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\World\Grid.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\src\World\WorldManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Julian\OneDrive\Desktop\GitRepos\VisualizedPathfinding\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{792B2DCD-65FC-304E-9C9F-EE2B2F86A48F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CC40508E-2DEF-3FF0-867B-3E60316D5A7D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
