@@ -14,7 +14,7 @@ Renderer::Renderer(sf::RenderWindow* window) {
 
 //Drawing functions-------------------------------------------------------------------------------------------------------
 
-void Renderer::drawRect(int x, int y, int width, int height, sf::Color c) {
+void Renderer::drawRect(float x, float y, float width, float height, sf::Color c) {
     sf::RectangleShape square(sf::Vector2f(width, height));
 
     square.setFillColor(c);
@@ -170,7 +170,7 @@ void Renderer::drawText(string i_text, int x, int y, int width, int height, int 
     currentWindow->draw(text);
 }
 
-void Renderer::transform(sf::Transformable& tranformable, int x, int y) {
+void Renderer::transform(sf::Transformable& tranformable, float x, float y) {
     tranformable.setPosition(x, y);
 }
 

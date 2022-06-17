@@ -105,6 +105,6 @@ void VsRenderer::updateViewSpace() {
     viewSpace[1] = helpViewSpace[1];
 }
 
-void VsRenderer::transform(sf::Transformable& tranformable, int x, int y) {
+void VsRenderer::transform(sf::Transformable& tranformable, float x, float y) {
     tranformable.move(x - viewSpace[1], y - viewSpace[0]);
 }

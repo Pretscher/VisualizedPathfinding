@@ -51,5 +51,6 @@ public:
 
     void drawingloop() {
         worldManager->draw(renderer, uiManager->getGridScreenSpace());
+        uiManager->draw();
     }
 };

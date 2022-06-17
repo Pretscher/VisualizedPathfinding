@@ -23,8 +23,9 @@ public:
         int xOffset = gridScreenSpace[0];
         int yOffset = gridScreenSpace[1];
 
-        int nodeWidth = screenWidth / this->width;
-        int nodeHeight = screenHeight / this->height;
+        renderer->drawRect(xOffset, yOffset, screenWidth, screenHeight, sf::Color::White);
+        float nodeWidth = (float) screenWidth / this->width;
+        float nodeHeight = (float) screenHeight / this->height;
         for(int y = 0; y < this->height; y++) {
             for(int x = 0; x < this->width; x++) {
                 int nodeX = xOffset + x * nodeWidth, nodeY = yOffset + y * nodeHeight;

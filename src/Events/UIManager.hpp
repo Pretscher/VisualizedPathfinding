@@ -7,15 +7,24 @@ public:
     }
 
     vector<int> getGridScreenSpace() {
-        return {0, topBarY, rightBarX, renderer->getPixelCountY()};
+        return {0, topBarHeight, renderer->getPixelCountX() - rightBarWidth, renderer->getPixelCountY()};
     }
 
-    void draw(Renderer* renderer) {
-
+    void draw() {
+        drawTopBar();
+        drawRigthBar();
     }
 
 private:
-    int rightBarX = 1900;
-    int topBarY = 100;
+    void drawTopBar() {
+        renderer->drawRect(0, 0, renderer->getPixelCountX() - rightBarWidth, topBarHeight, sf::Color(100, 100, 100, 255));
+    }
+
+    void drawRigthBar() {
+        renderer->drawRect(renderer->getPixelCountX() - rightBarWidth, 0, renderer->getPixelCountX(), renderer->getPixelCountY(), sf::Color(100, 100, 100, 255));
+    }
+
+    int rightBarWidth = 100;
+    int topBarHeight = 100;
     Renderer* renderer;
 };

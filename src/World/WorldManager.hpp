@@ -16,6 +16,7 @@ public:
     ~WorldManager() {
         delete grid;
         delete g;
+        delete algorithm;
     }
 
     void update() {

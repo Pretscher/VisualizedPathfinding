@@ -10,7 +10,7 @@ public:
     sf::RenderWindow* currentWindow;
     Renderer(sf::RenderWindow* window);
 
-    void drawRect(int x, int y, int width, int height, sf::Color c);
+    void drawRect(float x, float y, float width, float height, sf::Color c);
     void drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness);
     void drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness);
     void drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickness);
@@ -32,7 +32,7 @@ public:
     }
 
 protected:
-    virtual void transform(sf::Transformable& tranformable, int x, int y);
+    virtual void transform(sf::Transformable& tranformable, float x, float y);
 
 
      //SFML always uses the dimensions of window creation, which means we only have to save these once in the constructor.
