@@ -3,10 +3,7 @@
 using namespace std;
 
 int main() {
-
-    sf::RenderWindow* cWindow = new sf::RenderWindow(sf::VideoMode(sf::VideoMode::getFullscreenModes().at(0).width,
-            sf::VideoMode::getFullscreenModes().at(0).height), "Pathfinding", sf::Style::Titlebar | sf::Style::Close);
-    cWindow->setPosition(sf::Vector2i(0, 0));
+    sf::RenderWindow* cWindow = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Pathfinding", sf::Style::Titlebar | sf::Style::Close | sf::Style::Resize);
     Renderer* renderer = new Renderer(cWindow);
     EventManager eventManager = EventManager(renderer);
     while(cWindow->isOpen()) {
