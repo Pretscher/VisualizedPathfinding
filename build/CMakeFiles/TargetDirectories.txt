@@ -1,3 +1,3 @@
-C:/Users/Julian/OneDrive/Desktop/GitRepos/VisualizedPathfinding/build/CMakeFiles/VisualizedPathfinding.dir
-C:/Users/Julian/OneDrive/Desktop/GitRepos/VisualizedPathfinding/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Julian/OneDrive/Desktop/GitRepos/VisualizedPathfinding/build/CMakeFiles/ZERO_CHECK.dir
+/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles/VisualizedPathfinding.dir
+/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles/edit_cache.dir
+/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles/rebuild_cache.dir
