@@ -1003,7 +1003,8 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o: ../src/Events/Main.c
   ../src/Algorithm/Algorithm.hpp \
   /usr/include/c++/11/mutex \
   /usr/include/c++/11/bits/std_mutex.h \
-  /usr/include/c++/11/bits/unique_lock.h
+  /usr/include/c++/11/bits/unique_lock.h \
+  ../src/Events/UIManager.hpp
 
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o: ../src/Rendering/Renderer.cpp \
   /usr/include/stdc-predef.h \
@@ -1726,6 +1727,8 @@ CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o: ../src/Rend
 /usr/include/c++/11/bits/quoted_string.h:
 
 /usr/include/c++/11/filesystem:
+
+../src/Events/UIManager.hpp:
 
 ../src/Events/EventManager.hpp:
 

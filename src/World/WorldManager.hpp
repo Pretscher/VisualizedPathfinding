@@ -38,8 +38,8 @@ public:
         }
     }
 
-    void draw(Renderer* renderer) {
-        grid->draw(renderer);
+    void draw(Renderer* renderer, vector<int>&& gridScreenSpace) {
+        grid->draw(renderer, move(gridScreenSpace));
     }
 
 private:

@@ -274,4 +274,5 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o: \
  /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/World/Grid.hpp \
  /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Algorithm/Algorithm.hpp \
  /usr/include/c++/11/mutex /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h
+ /usr/include/c++/11/bits/unique_lock.h \
+ /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.hpp

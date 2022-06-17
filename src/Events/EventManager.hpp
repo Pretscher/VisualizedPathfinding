@@ -1,22 +1,23 @@
 #include "Renderer.hpp"
 #include "WorldManager.hpp"
-
+#include "UIManager.hpp"
 class EventManager {
 public:
     //Memory of this object has to be externally managed.
     Renderer* renderer;
     WorldManager* worldManager;
-
+    UIManager* uiManager;
     EventManager(Renderer* i_renderer) {
         std::srand(std::time(nullptr));
         this->renderer = i_renderer;
+        this->uiManager = new UIManager(renderer);
         this->worldManager = new WorldManager();
-
         init();
     }
 
     ~EventManager() {
         delete worldManager;
+        delete uiManager;
     }
 
     void update() {
@@ -49,7 +50,6 @@ public:
     }
 
     void drawingloop() {
-        worldManager->draw(renderer);
-
+        worldManager->draw(renderer, uiManager->getGridScreenSpace());
     }
 };

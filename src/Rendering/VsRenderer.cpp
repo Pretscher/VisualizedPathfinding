@@ -20,14 +20,12 @@ void VsRenderer::getMousePos(int& o_xs, int& o_ys, bool factorInViewspace, bool 
     auto pos = sf::Mouse::getPosition(*currentWindow);
     int x = pos.x;
     int y = pos.y;
-    toYX(y, x);
 
     int helpVsX = viewSpace[1];
     int helpVsY = viewSpace[0];
-    toYX(helpVsX, helpVsY);
 
     if (factorInBorders == true) {
-        if (x < normalResXs && y < normalResYs) {
+        if (x < xPixels && y < yPixels) {
             if (factorInViewspace == true) {
                 o_xs = x + helpVsX;
                 o_ys = y + helpVsY;
@@ -66,14 +64,11 @@ void VsRenderer::updateViewSpace() {
     int vsRight = viewSpaceLimits[1];
     int vsTop = viewSpaceLimits[2];
     int vsBottom = viewSpaceLimits[3];
-    toYXBounds(vsTop, vsLeft);
-    toYXBounds(vsBottom, vsRight);
     if (mouseY != -1) {
         int localY = mouseY;
         int localX = mouseX;
-        fromYX(mouseY, mouseX);
 
-        if (localY < normalResYs / 10) {
+        if (localY < yPixels / 10) {
             if (helpViewSpace[0] - moveSpeed > vsTop) {
                 helpViewSpace[0] -= moveSpeed;
             }
@@ -81,7 +76,7 @@ void VsRenderer::updateViewSpace() {
                 helpViewSpace[0] = vsTop;
             }
         }
-        if (localY > normalResYs * 0.9) {
+        if (localY > yPixels * 0.9) {
             if (helpViewSpace[0] + moveSpeed < vsBottom) {
                 helpViewSpace[0] += moveSpeed;
             }
@@ -89,7 +84,7 @@ void VsRenderer::updateViewSpace() {
                 helpViewSpace[0] = vsBottom;
             }
         }
-        if (localX < normalResXs / 10) {
+        if (localX < xPixels / 10) {
             if (helpViewSpace[1] - moveSpeed > vsLeft) {
                 helpViewSpace[1] -= moveSpeed;
             }
@@ -97,7 +92,7 @@ void VsRenderer::updateViewSpace() {
                 helpViewSpace[1] = vsLeft;
             }
         }
-        if (localX > normalResXs * 0.9f) {
+        if (localX > xPixels * 0.9f) {
             if (helpViewSpace[1] + moveSpeed < vsRight) {
                 helpViewSpace[1] += moveSpeed;
             }

@@ -6,28 +6,25 @@
 
 Renderer::Renderer(sf::RenderWindow* window) {
     currentWindow = window;
+    //SFML always uses the dimensions of window creation, thus we can set them here and never change them again.
+    xPixels = currentWindow->getSize().x;
+    yPixels = currentWindow->getSize().y;
     currentWindow->setFramerateLimit(60);
 }
 
 //Drawing functions-------------------------------------------------------------------------------------------------------
 
 void Renderer::drawRect(int x, int y, int width, int height, sf::Color c) {
-    fromYXBounds(width, height);
-    fromYX(y, x);
-
     sf::RectangleShape square(sf::Vector2f(width, height));
 
     square.setFillColor(c);
     transform(square, x, y);
-    Renderer::currentWindow->draw(square);
+    currentWindow->draw(square);
 }
 
 
 void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness) {
-    fromYXBounds(width, height);
-    fromYX(y, x);
     int unusedHelp = 0;//we dont need to write 2 values but only have functions for 2 values (lazyness)
-    fromYXBounds(thickness, unusedHelp);
 
     sf::RectangleShape square(sf::Vector2f(width - thickness, height -  2 * thickness));
     square.setOutlineColor(c);
@@ -36,14 +33,11 @@ void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c,
 
     transform(square, x, y);
 
-    Renderer::currentWindow->draw(square);
+    currentWindow->draw(square);
 }
 
 void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness) {
-    fromYX(y, x);
     int unusedHelp = 0;//we dont need to write 2 values but only have functions for 2 values (lazyness)
-    fromYXBounds(outlineThickness, unusedHelp);
-    fromYXBounds(radius, unusedHelp);
 
     sf::CircleShape circle(radius);
     if (fill == true) {
@@ -55,13 +49,10 @@ void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int 
         circle.setFillColor(sf::Color(0, 0, 0, 0));
     }
     transform(circle, x, y);
-    Renderer::currentWindow->draw(circle);
+    currentWindow->draw(circle);
 }
 
 void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickness) {
-    fromYX(y1, x1);
-    fromYX(y2, x2);
-
     float dX = x2 - x1;
     float dY = y2 - y1;
     int ht = thickness / 2;
@@ -74,17 +65,16 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickne
     line.setRotation(rot);
     line.setFillColor(c);
 
-    Renderer::currentWindow->draw(line);
+    currentWindow->draw(line);
 }
 
 void Renderer::getMousePos(int& o_xs, int& o_ys, bool factorInBorders) {
     auto pos = sf::Mouse::getPosition(*currentWindow);
     int x = pos.x;
     int y = pos.y;
-    toYX(y, x);
 
     if (factorInBorders == true) {
-        if (x < normalResXs && y < normalResYs) {
+        if (x < xPixels && y < yPixels) {
                 o_xs = x;
                 o_ys = y;
         }
@@ -116,9 +106,6 @@ sf::Texture Renderer::loadTexture(string path, bool repeat) {
 
 
 void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Texture texture) {
-    fromYXBounds(width, height);
-    fromYX(y, x);
-
     sf::RectangleShape square(sf::Vector2f(width, height));
     
     square.setTexture(&texture);
@@ -129,13 +116,10 @@ void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Text
         square.setTextureRect(rect);
     }//else stretch
 
-    Renderer::currentWindow->draw(square);
+    currentWindow->draw(square);
 }
 
 void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) {
-    fromYXBounds(width, height);
-    fromYX(y, x);
-
     sf::Text text;
 
     sf::Font font;
@@ -150,7 +134,6 @@ void Renderer::drawText(string i_text, int x, int y, int width, int height, int 
 
 
     int unusedHelp = 0;
-    toYXBounds(charSize, unusedHelp);
     text.setFillColor(color);
     text.setCharacterSize(charSize);
 

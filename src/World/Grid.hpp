@@ -17,28 +17,30 @@ public:
     }
 
 
-    void draw(Renderer* renderer) const {
-        int windowWidth = renderer->currentWindow->getSize().x;
-        int windowHeight = renderer->currentWindow->getSize().y;
+    void draw(Renderer* renderer, vector<int>&& gridScreenSpace) const {
+        int screenWidth = gridScreenSpace[2] - gridScreenSpace[0];
+        int screenHeight = gridScreenSpace[3] - gridScreenSpace[1];
+        int xOffset = gridScreenSpace[0];
+        int yOffset = gridScreenSpace[1];
 
-        int nodeWidth = windowWidth / this->width;
-        int nodeHeight = windowHeight / this->height;
-        for(int x = 0; x < this->width; x++) {
-            for(int y = 0; y < this->height; y++) {
-                int nodeX = x * nodeWidth, nodeY = y * nodeHeight;
-                renderer->drawRect(nodeX, nodeY, nodeWidth, nodeHeight, nodes[y * this->height + x]);
+        int nodeWidth = screenWidth / this->width;
+        int nodeHeight = screenHeight / this->height;
+        for(int y = 0; y < this->height; y++) {
+            for(int x = 0; x < this->width; x++) {
+                int nodeX = xOffset + x * nodeWidth, nodeY = yOffset + y * nodeHeight;
+                renderer->drawRect(nodeX, nodeY, nodeWidth, nodeHeight, nodes[y * this->width + x]);
             }
         }
     }
 
 
     inline sf::Color getPixel(int x, int y) const {
-        return nodes[y * height + x];
+        return nodes[y * width + x];
     }
 
     inline void setPixel(int x, int y, sf::Color rgb) {
-        calculateWhiteCounter(nodes[y * height + x], rgb);
-        nodes[y * height + x] = rgb;
+        calculateWhiteCounter(nodes[y * width + x], rgb);
+        nodes[y * width + x] = rgb;
     }
 
     inline int getWidth() const {
