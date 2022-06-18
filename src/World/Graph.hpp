@@ -63,14 +63,6 @@ public:
         std::cout << "Graph of " << nodes.size() << " Nodes created in " << (float)timeDiff.count() / 1000000 << "ms.\n";
     }
 
-    inline void setHeapIndex(int graphNodeIndex, int heapIndex) {
-        nodes[graphNodeIndex]->heapIndex = heapIndex;
-    }
-
-    inline int getHeapIndex(int graphNodeIndex) {
-        return nodes[graphNodeIndex]->heapIndex;
-    }
-
     inline void reset() {
         for (int i = 0; i < nodes.size(); i++) {
             nodes[i]->reset();
@@ -91,14 +83,14 @@ public:
 
 private:
     inline void linkNeighbours(GraphNode* node) {
-        int nodeIndex = node->indexInFullGraph;
-        if(node->x > 0 && nodeIndex - 1 >= 0) {
+        int nodeIndex = node->getIndexInFullGraph();
+        if(node->getX() > 0 && nodeIndex - 1 >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - 1]);//left
         }
         if(nodeIndex - width >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - width]);//top
         }
-        if(node->x > 0 && nodeIndex - width - 1 >= 0) {
+        if(node->getX() > 0 && nodeIndex - width - 1 >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - width - 1]);//top left
         }
     }

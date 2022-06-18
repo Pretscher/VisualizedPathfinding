@@ -8,12 +8,12 @@
 
 	void BinaryHeap::actualizeGraphIndex(int indexInHeap) {
 		int graphIndex = heap[indexInHeap].getIndexInGraph();
-		graph[graphIndex]->heapIndex = indexInHeap;
+		graph[graphIndex]->setHeapIndex(indexInHeap);
 	}
 
 	void BinaryHeap::dontReinsert(int indexInHeap) {
 		int graphIndex = heap[indexInHeap].getIndexInGraph();
-		graph[graphIndex]->heapIndex = -2;
+		graph[graphIndex]->setHeapIndex(-2);
 	}
 	//-------------------------------------------
 	//Heap methods

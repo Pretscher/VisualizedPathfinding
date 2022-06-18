@@ -27,10 +27,10 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	//algorithm start
 	auto startTime = std::chrono::high_resolution_clock::now();
 
-	startNode->previousNode = startNode;
-	startNode->distanceTravelled = 0;
+	startNode->setPreviousNode(startNode);
+	startNode->setDistanceTravelled(0);
 	//insert start node with the value 0
-	heap->insert(getHeuristic(startNode, goalNode), startNode->indexInGraph);
+	heap->insert(getHeuristic(startNode, goalNode), startNode->getIndexInAlgorithmGraph());
 	bool foundPath = false;
 
 	while (heap->getCurrentNodeCount() > 0) {//while heap is not empty
@@ -40,28 +40,29 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 			foundPath = true;
 			break;
 		}
-		for (int i = 0; i < cNode->neighbours.size(); i++) {
-			float heuristics = getHeuristic(cNode->neighbours[i], cNode);
-			cNode->neighbourCosts[i] = heuristics;
+		const vector<GraphNode*>& cNeighbours = cNode->getNeighbours();
+		for (int i = 0; i < cNode->getNeighbours().size(); i++) {
+			float heuristics = getHeuristic(cNeighbours[i], cNode);
+			cNode->setNeighbourCosts(i, heuristics);
 		}
 		//we will look through graph->getNeighbourIndices() of this node
-		for (int i = 0; i < cNode->neighbours.size(); i++) {
-			GraphNode* cNeighbour = cNode->neighbours[i];
-			if (cNeighbour->usedByMoveable == false) {//efficient method to exclude moveable colision objects from graph
-				float tempDistance = cNode->distanceTravelled + cNode->neighbourCosts[i];
-				if (tempDistance < cNeighbour->distanceTravelled) {
-					cNeighbour->distanceTravelled = tempDistance;
-					cNeighbour->previousNode = cNode;
+		for (int i = 0; i < cNeighbours.size(); i++) {
+			GraphNode* cNeighbour = cNeighbours[i];
+			if (cNeighbour->isUsedByMoveable() == false) {//efficient method to exclude moveable colision objects from graph
+				float tempDistance = cNode->getDistanceTravelled() + cNode->getNeighbourCosts(i);
+				if (tempDistance < cNeighbour->getDistanceTravelled()) {
+					cNeighbour->setDistanceTravelled(tempDistance);
+					cNeighbour->setPreviousNode(cNode);
 
 					float heuristicOfCurrentNeighbour = tempDistance + getHeuristic(cNeighbour, goalNode);
 
 					//if graphnode has been inserted to heap (index in heap initialized to -1)
-					if (cNeighbour->heapIndex != -2) {//in that case dont insert or decrease
-						if (cNeighbour->heapIndex != -1) {//-1 = not yet visited, insert
-							heap->decrease(cNeighbour->heapIndex, heuristicOfCurrentNeighbour);
+					if (cNeighbour->getHeapIndex() != -2) {//in that case dont insert or decrease
+						if (cNeighbour->getHeapIndex() != -1) {//-1 = not yet visited, insert
+							heap->decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
 						}
 						else {
-							heap->insert(heuristicOfCurrentNeighbour, cNeighbour->indexInGraph);
+							heap->insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
 						}
 					}
 				}
@@ -86,25 +87,25 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 
 float Algorithm::getHeuristic(GraphNode* start, GraphNode* goal) {
 	float heuristics = (float)sqrt(
-						  abs(goal->x - start->x) * abs(goal->x - start->x) 
-						+ abs(goal->y - start->y) * abs(goal->y - start->y));
+						  abs(goal->getX() - start->getX()) * abs(goal->getX() - start->getX()) 
+						+ abs(goal->getY() - start->getY()) * abs(goal->getY() - start->getY()));
 	return heuristics;
 }
 
 vector<Point> Algorithm::retrievePath(GraphNode* startNode, GraphNode* goalNode) {
-	int pathLenght = goalNode->distanceTravelled;
+	int pathLenght = goalNode->getDistanceTravelled();
 	vector<Point> path;
 	path.resize(pathLenght);//can this be repalced by reserve()?
 	//put path indices into path array from end to front
-	GraphNode* cNode = goalNode;
+	const GraphNode* cNode = goalNode;
 	while (true) {
-		path[pathLenght].x = cNode->x;
-		path[pathLenght].y = cNode->y;
+		path[pathLenght].x = cNode->getX();
+		path[pathLenght].y = cNode->getY();
 		pathLenght --;
 		if (cNode == startNode) {
 			break;
 		}
-		cNode = cNode->previousNode;
+		cNode = cNode->getPreviousNode();
 	}
 	//we want the path to start at the start node, not the goal node
 	return path;
