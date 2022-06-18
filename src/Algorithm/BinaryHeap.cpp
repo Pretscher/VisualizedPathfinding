@@ -7,19 +7,19 @@
 	}
 
 	void BinaryHeap::actualizeGraphIndex(int indexInHeap) {
-		int graphIndex = heap[indexInHeap]->getIndexInGraph();
+		int graphIndex = heap[indexInHeap].getIndexInGraph();
 		graph[graphIndex]->heapIndex = indexInHeap;
 	}
 
 	void BinaryHeap::dontReinsert(int indexInHeap) {
-		int graphIndex = heap[indexInHeap]->getIndexInGraph();
+		int graphIndex = heap[indexInHeap].getIndexInGraph();
 		graph[graphIndex]->heapIndex = -2;
 	}
 	//-------------------------------------------
 	//Heap methods
 
 	void BinaryHeap::insert(int heuristic, int graphIndex) {
-		HeapNode* node = new HeapNode(heuristic, graphIndex);
+		HeapNode node(heuristic, graphIndex);
 		int tempSize = heap.size();
 		heap.push_back(node);
 		actualizeGraphIndex(tempSize);
@@ -27,7 +27,7 @@
 	}
 
 	HeapNode BinaryHeap::extractMin() {
-		HeapNode copy = *heap[0];
+		HeapNode copy = heap[0];
 		//delete heap[0];
 		//overwrite with last leaf of heap
 		dontReinsert(0);
@@ -45,7 +45,7 @@
 
 	void BinaryHeap::decrease(int heapIndex, float newKey) {
 		//key is better than before so change the key
-		heap[heapIndex]->setKey(newKey);
+		heap[heapIndex].setKey(newKey);
 		bubbleUp(heapIndex);
 	}
 
@@ -87,11 +87,11 @@
 			return;
 		}
 		int tempParentIndex = getParentIndex(indexOfNodeInHeap);
-		HeapNode* parent = heap[tempParentIndex];
+		HeapNode& parent = heap[tempParentIndex];
 		int tempIndex = indexOfNodeInHeap;
-		HeapNode* tempNode = heap[indexOfNodeInHeap];
+		HeapNode& tempNode = heap[indexOfNodeInHeap];
 
-		while (isRoot(tempIndex) == false && parent->getKey() > tempNode->getKey()) {
+		while (isRoot(tempIndex) == false && parent.getKey() > tempNode.getKey()) {
 			//swap node and parent
 			heap[tempParentIndex] = tempNode;
 			actualizeGraphIndex(tempParentIndex);
@@ -107,10 +107,7 @@
 
 	void BinaryHeap::bubbleDown(int indexOfNodeInHeap) {
 		int tempChildIndex;
-		HeapNode* tempChild;
-
 		int tempIndex = indexOfNodeInHeap;
-		HeapNode* tempNode = heap[indexOfNodeInHeap];
 
 		while (isLeaf(tempIndex) == false) {
 
@@ -121,20 +118,21 @@
 			//if leftKey > rightKey swap
 			//there does not need to be a right child for every non-leaf => check if there is
 			if (rightChildIndex < heap.size()) {
-				if (heap[tempChildIndex]->getKey() > heap[rightChildIndex]->getKey()) {
+				if (heap[tempChildIndex].getKey() > heap[rightChildIndex].getKey()) {
 					tempChildIndex = rightChildIndex;
 				}
 			}
 			//tempChildIndex can be the left or the right Childindex now
-			tempChild = heap[tempChildIndex];
 			//if heap has the right structure end this method
-			if (tempChild->getKey() >= tempNode->getKey()) {
+			if (heap[tempChildIndex].getKey() >= heap[tempIndex].getKey()) {
 				break;
 			}
 			//swap node and parent
-			heap[tempChildIndex] = tempNode;
+			HeapNode tempChild = heap[tempChildIndex];//copy child
+			heap[tempChildIndex] = heap[tempIndex];//overwrite child
+			heap[tempIndex] = tempChild;//reinsert child at parents index
+
 			actualizeGraphIndex(tempChildIndex);
-			heap[tempIndex] = tempChild;
 			actualizeGraphIndex(tempIndex);
 			//Set index of node to new place
 			tempIndex = tempChildIndex;

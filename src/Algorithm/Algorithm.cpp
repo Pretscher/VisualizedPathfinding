@@ -24,6 +24,9 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	//and PreviousNode, which have to be reset
 	graph->reset();
 
+	//algorithm start
+	auto startTime = std::chrono::high_resolution_clock::now();
+
 	startNode->previousNode = startNode;
 	startNode->distanceTravelled = 0;
 	//insert start node with the value 0
@@ -67,9 +70,10 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	}
 	delete heap;
 	if (foundPath == true) {
-		//cout << "time elapsed sind the algorithm started: " << Utils::endTimerGetTime();
 		vector<Point> path = retrievePath(startNode, goalNode);
 
+		auto timeDiff = std::chrono::high_resolution_clock::now() - startTime;
+		std::cout << "Path of " <<  path.size() << " nodes found in " << (float)timeDiff.count() / 1000000 << "ms.\n";
 		if (path.size() == 0) {
 			cout << "\nNo path possible!-----------------------------------------------------\n\n\n";
 			return vector<Point>();

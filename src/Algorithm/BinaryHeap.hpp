@@ -6,14 +6,9 @@ class BinaryHeap {
 public:
 	//needs current iteration for efficiency: heap nodes are not deleted, but if they are reinserted into the heap and they were
 	//initialized in another run of the algorithm, they reinitialize themselves.
-	BinaryHeap::BinaryHeap(vector<GraphNode*>& graphNodes) {
+	BinaryHeap(vector<GraphNode*>& graphNodes) {
 		//heap has same size as graph
 		graph = graphNodes;
-	}
-	~BinaryHeap() {
-		for(int i = 0; i < heap.size(); i++) {
-			delete heap[i];
-		}
 	}
 
 	int getCurrentNodeCount();
@@ -36,6 +31,6 @@ public:
 	void bubbleDown(int indexOfNodeInHeap);
 	void dontReinsert(int indexInHeap);
 private:
-	vector<HeapNode*> heap;
+	vector<HeapNode> heap;
 	vector<GraphNode*> graph;
 };
