@@ -1006,6 +1006,9 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o: ../src/Events/Main.c
   /usr/include/c++/11/bits/unique_lock.h \
   ../src/Events/UIManager.hpp
 
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o: ../src/Events/UIManager.cpp \
+  /usr/include/stdc-predef.h
+
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o: ../src/Rendering/Renderer.cpp \
   /usr/include/stdc-predef.h \
   ../src/Rendering/Renderer.hpp \
@@ -1727,6 +1730,8 @@ CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o: ../src/Rend
 /usr/include/c++/11/bits/quoted_string.h:
 
 /usr/include/c++/11/filesystem:
+
+../src/Events/UIManager.cpp:
 
 ../src/Events/UIManager.hpp:
 

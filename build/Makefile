@@ -201,6 +201,30 @@ src/Events/Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisualizedPathfinding.dir/build.make CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.s
 .PHONY : src/Events/Main.cpp.s
 
+src/Events/UIManager.o: src/Events/UIManager.cpp.o
+.PHONY : src/Events/UIManager.o
+
+# target to build an object file
+src/Events/UIManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisualizedPathfinding.dir/build.make CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o
+.PHONY : src/Events/UIManager.cpp.o
+
+src/Events/UIManager.i: src/Events/UIManager.cpp.i
+.PHONY : src/Events/UIManager.i
+
+# target to preprocess a source file
+src/Events/UIManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisualizedPathfinding.dir/build.make CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.i
+.PHONY : src/Events/UIManager.cpp.i
+
+src/Events/UIManager.s: src/Events/UIManager.cpp.s
+.PHONY : src/Events/UIManager.s
+
+# target to generate assembly for a file
+src/Events/UIManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VisualizedPathfinding.dir/build.make CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.s
+.PHONY : src/Events/UIManager.cpp.s
+
 src/Rendering/Renderer.o: src/Rendering/Renderer.cpp.o
 .PHONY : src/Rendering/Renderer.o
 
@@ -267,6 +291,9 @@ help:
 	@echo "... src/Events/Main.o"
 	@echo "... src/Events/Main.i"
 	@echo "... src/Events/Main.s"
+	@echo "... src/Events/UIManager.o"
+	@echo "... src/Events/UIManager.i"
+	@echo "... src/Events/UIManager.s"
 	@echo "... src/Rendering/Renderer.o"
 	@echo "... src/Rendering/Renderer.i"
 	@echo "... src/Rendering/Renderer.s"

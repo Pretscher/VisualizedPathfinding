@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.o.d"
   "CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o"
   "CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o.d"
+  "CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o"
+  "CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o.d"
   "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o"
   "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o.d"
   "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o"

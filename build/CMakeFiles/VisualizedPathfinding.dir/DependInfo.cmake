@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Algorithm/Algorithm.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/Algorithm.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/Algorithm.cpp.o.d"
   "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Algorithm/BinaryHeap.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.o.d"
   "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/Main.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o.d"
+  "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o.d"
   "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/Renderer.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o.d"
   "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/VsRenderer.cpp" "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o" "gcc" "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o.d"
   )

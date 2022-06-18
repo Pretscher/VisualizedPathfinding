@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build",
+  "command": "/usr/bin/g++  -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/SFML/include -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/World -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Algorithm -g -o CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o -c /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp",
+  "file": "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp"
+},
+{
+  "directory": "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build",
   "command": "/usr/bin/g++  -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/SFML/include -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/World -I/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Algorithm -g -o CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o -c /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/Renderer.cpp",
   "file": "/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/Renderer.cpp"
 },

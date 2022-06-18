@@ -2,23 +2,17 @@
 #include "BinaryHeap.hpp"
 
 
-	BinaryHeap::BinaryHeap(vector<GraphNode*>& graphNodes, int currentIteration) {
-		//heap has same size as graph
-		graph = graphNodes;
-		this->currentIteration = currentIteration;
-	}
-
 	int BinaryHeap::getCurrentNodeCount() {
 		return heap.size();
 	}
 
 	void BinaryHeap::actualizeGraphIndex(int indexInHeap) {
-		int graphIndex = heap[indexInHeap]->getIndexInGraph(currentIteration);
+		int graphIndex = heap[indexInHeap]->getIndexInGraph();
 		graph[graphIndex]->heapIndex = indexInHeap;
 	}
 
 	void BinaryHeap::dontReinsert(int indexInHeap) {
-		int graphIndex = heap[indexInHeap]->getIndexInGraph(currentIteration);
+		int graphIndex = heap[indexInHeap]->getIndexInGraph();
 		graph[graphIndex]->heapIndex = -2;
 	}
 	//-------------------------------------------
@@ -50,14 +44,9 @@
 	}
 
 	void BinaryHeap::decrease(int heapIndex, float newKey) {
-		if (heapIndex >= heap.size()) {
-			std::cout << "decrease failed, index out of bounds";
-			std::exit(0);
-		}
-		if (heap[heapIndex] != nullptr) {
-			heap[heapIndex]->setKey(newKey);
-			bubbleUp(heapIndex);
-		}
+		//key is better than before so change the key
+		heap[heapIndex]->setKey(newKey);
+		bubbleUp(heapIndex);
 	}
 
 	//-------------------------------------------

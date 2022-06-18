@@ -5,7 +5,6 @@
 
 
 vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) {
-	nextIteration();
 	GraphNode* startNode = graph->getIndexFromCoords(startX, startY);
 	GraphNode* goalNode = graph->getIndexFromCoords(goalX, goalY);
 
@@ -19,8 +18,10 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	}
 
 	int graphNodeCount = graph->nodes.size();
-	BinaryHeap* heap = new BinaryHeap(graph->nodes, currentIteration);
+	BinaryHeap* heap = new BinaryHeap(graph->nodes);
 
+	//graph may have been used in a previous algorithm and we write information to it like distanceTravelled
+	//and PreviousNode, which have to be reset
 	graph->reset();
 
 	startNode->previousNode = startNode;
@@ -31,7 +32,7 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 
 	while (heap->getCurrentNodeCount() > 0) {//while heap is not empty
 		HeapNode helpNode(heap->extractMin());//extract best node
-		GraphNode* cNode = graph->nodes[helpNode.getIndexInGraph(currentIteration)];//get graphIndex of best node
+		GraphNode* cNode = graph->nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
 		if (cNode == goalNode) {
 			foundPath = true;
 			break;
@@ -64,22 +65,17 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 			}
 		}
 	}
-
+	delete heap;
 	if (foundPath == true) {
-
 		//cout << "time elapsed sind the algorithm started: " << Utils::endTimerGetTime();
-
 		vector<Point> path = retrievePath(startNode, goalNode);
 
 		if (path.size() == 0) {
 			cout << "\nNo path possible!-----------------------------------------------------\n\n\n";
-			delete heap;
 			return vector<Point>();
 		}
-		delete heap;
 		return path;
 	}
-	delete heap;
 	cout << "\nNo path possible!-----------------------------------------------------\n\n\n";
 	return vector<Point>();
 }

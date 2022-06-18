@@ -1009,6 +1009,10 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o
  /usr/include/c++/11/bits/unique_lock.h
  /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.hpp
 
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o
+ /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp
+ /usr/include/stdc-predef.h
+
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o
  /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/Renderer.cpp
  /usr/include/stdc-predef.h

@@ -6,8 +6,10 @@ class BinaryHeap {
 public:
 	//needs current iteration for efficiency: heap nodes are not deleted, but if they are reinserted into the heap and they were
 	//initialized in another run of the algorithm, they reinitialize themselves.
-	BinaryHeap(vector<GraphNode*>& graphNodes, int currentIteration);
-
+	BinaryHeap::BinaryHeap(vector<GraphNode*>& graphNodes) {
+		//heap has same size as graph
+		graph = graphNodes;
+	}
 	~BinaryHeap() {
 		for(int i = 0; i < heap.size(); i++) {
 			delete heap[i];
@@ -36,5 +38,4 @@ public:
 private:
 	vector<HeapNode*> heap;
 	vector<GraphNode*> graph;
-	int currentIteration;
 };

@@ -111,10 +111,24 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/Main.cpp -o CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.s
 
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o: CMakeFiles/VisualizedPathfinding.dir/flags.make
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o: ../src/Events/UIManager.cpp
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o: CMakeFiles/VisualizedPathfinding.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o -MF CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o.d -o CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o -c /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp
+
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp > CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.i
+
+CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Events/UIManager.cpp -o CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.s
+
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o: CMakeFiles/VisualizedPathfinding.dir/flags.make
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o: ../src/Rendering/Renderer.cpp
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o: CMakeFiles/VisualizedPathfinding.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o -MF CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o.d -o CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o -c /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/Renderer.cpp
 
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.s: cmake_force
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o: CMakeFiles/VisualizedPathfinding.dir/flags.make
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o: ../src/Rendering/VsRenderer.cpp
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o: CMakeFiles/VisualizedPathfinding.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o -MF CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o.d -o CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o -c /home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/src/Rendering/VsRenderer.cpp
 
 CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.i: cmake_force
@@ -144,6 +158,7 @@ VisualizedPathfinding_OBJECTS = \
 "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/Algorithm.cpp.o" \
 "CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.o" \
 "CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o" \
+"CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o" \
 "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o" \
 "CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o"
 
@@ -153,11 +168,12 @@ VisualizedPathfinding_EXTERNAL_OBJECTS =
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/Algorithm.cpp.o
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.o
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o
+VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.o
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.o
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.o
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/build.make
 VisualizedPathfinding: CMakeFiles/VisualizedPathfinding.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable VisualizedPathfinding"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/allah/Desktop/Vscode-Workspace/Cpp/VisualizedPathfinding/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable VisualizedPathfinding"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VisualizedPathfinding.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

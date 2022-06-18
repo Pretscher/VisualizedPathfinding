@@ -10,32 +10,18 @@ public:
         myIndexInGraph = indexInGraph;
     }
 
-    inline float getKey() {
+    inline float getKey() const {
         return myKey;
     }
 
-    inline unsigned int getIndexInGraph(int currentIteration) {
-        if (usedInIteration <= currentIteration && usedInIteration != -1) {//-1 means never used
-            myKey = numeric_limits<float>::max();
-            myIndexInGraph = -1;
-            usedInIteration = currentIteration;
-        }
+    inline int getIndexInGraph() const {
         return myIndexInGraph;
-    }
-
-    inline void getIndex(unsigned int index) {
-        myIndexInGraph = index;
     }
 
     inline void setKey(float key) {
         myKey = key;
     }
-
-    inline int getIteration() {
-        return usedInIteration;
-    }
 private:
-    int usedInIteration = -1;
-    float myKey = numeric_limits<float>::max();
-    int myIndexInGraph = -1;
+    float myKey;
+    int myIndexInGraph;
 };
