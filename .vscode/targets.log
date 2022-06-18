@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 18 12:37:05 2022
+# Make data base, printed on Sat Jun 18 14:45:29 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-da810485-9b8a-4cb3-bffb-25957fdd00dd.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6262f3b8-9c76-4e9f-988c-a6b5675889f3.sock
 # environment
 LC_NAME = de_DE.UTF-8
 # environment
@@ -107,7 +107,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 4532
+VSCODE_PID = 39266
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -217,7 +217,7 @@ MANAGERPID = 1264
 # environment
 LC_MEASUREMENT = de_DE.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4467
+GIO_LAUNCHED_DESKTOP_FILE_PID = 39222
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
@@ -291,7 +291,6 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Files
 
- 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
@@ -318,6 +317,7 @@ makefile:
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
+ 
 
 # Not a target:
 GNUmakefile:
@@ -340,6 +340,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/21=0%
-# Finished Make data base on Sat Jun 18 12:37:05 2022
+# Finished Make data base on Sat Jun 18 14:45:29 2022
 
  

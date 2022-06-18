@@ -21,5 +21,5 @@ private:
      * @param x 
      * @param y 
      */
-    void transform(sf::Transformable& tranformable, float x, float y) override;
+    void transform(sf::Transformable& tranformable, float x, float y) const override;
 };

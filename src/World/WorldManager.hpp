@@ -1,22 +1,18 @@
 #include "Graph.hpp"
 #include "Algorithm.hpp"
+#include <memory>
 class WorldManager {
 public:
-    Grid* grid;
-    Graph* g;
-    Algorithm* algorithm;
+    unique_ptr<Grid> grid;
+    unique_ptr<Graph> g;
+    unique_ptr<Algorithm> algorithm;
     WorldManager() {
-        grid = new Grid(192, 108, sf::Color::White);
-        g = new Graph();
+        grid = make_unique<Grid>(192, 108, sf::Color::White);
+        g = make_unique<Graph>();
         createTestGrid(100);
         g->generateFromGrid(*grid);
 
-        algorithm = new Algorithm(g);
-    }
-    ~WorldManager() {
-        delete grid;
-        delete g;
-        delete algorithm;
+        algorithm = make_unique<Algorithm>(*g);
     }
 
     void update() {
@@ -39,7 +35,7 @@ public:
         }
     }
 
-    void draw(Renderer* renderer, vector<int>&& gridScreenSpace) {
+    void draw(const Renderer& renderer, vector<int>&& gridScreenSpace) {
         grid->draw(renderer, move(gridScreenSpace));
     }
 

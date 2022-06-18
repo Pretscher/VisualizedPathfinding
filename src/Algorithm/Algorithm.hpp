@@ -17,13 +17,13 @@ public:
 
 class Algorithm {
 public:
-	Algorithm(Graph* i_graph) {
+	Algorithm(Graph& i_graph) {
 		this->graph = i_graph;
 	}
 
 	vector<Point> findPath(int startX, int startY, int goalX, int goalY);
 private:
-	Graph* graph;
+	Graph graph;
 	inline float getHeuristic(GraphNode* start, GraphNode* goal);
 
 	vector<Point> retrievePath(GraphNode* startNode, GraphNode* goalNode);

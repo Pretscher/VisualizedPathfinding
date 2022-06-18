@@ -5,8 +5,8 @@
 
 
 vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) {
-	GraphNode* startNode = graph->getIndexFromCoords(startX, startY);
-	GraphNode* goalNode = graph->getIndexFromCoords(goalX, goalY);
+	GraphNode* startNode = graph.getIndexFromCoords(startX, startY);
+	GraphNode* goalNode = graph.getIndexFromCoords(goalX, goalY);
 
 	if(startNode == nullptr) {
 		std::cout << "The start node at coordinates x = " << startX << ", y = " << startY << " for A*-pathfinding is not existent or obstructed.\n";
@@ -17,12 +17,12 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 		return vector<Point>();
 	}
 
-	int graphNodeCount = graph->nodes.size();
-	BinaryHeap* heap = new BinaryHeap(graph->nodes);
+	int graphNodeCount = graph.nodes.size();
+	BinaryHeap* heap = new BinaryHeap(graph.nodes);
 
 	//graph may have been used in a previous algorithm and we write information to it like distanceTravelled
 	//and PreviousNode, which have to be reset
-	graph->reset();
+	graph.reset();
 
 	//algorithm start
 	auto startTime = std::chrono::high_resolution_clock::now();
@@ -35,7 +35,7 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 
 	while (heap->getCurrentNodeCount() > 0) {//while heap is not empty
 		HeapNode helpNode(heap->extractMin());//extract best node
-		GraphNode* cNode = graph->nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
+		GraphNode* cNode = graph.nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
 		if (cNode == goalNode) {
 			foundPath = true;
 			break;

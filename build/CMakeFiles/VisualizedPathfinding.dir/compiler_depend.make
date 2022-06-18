@@ -857,8 +857,6 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o: ../src/Events/Main.c
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
-  ../src/Events/EventManager.hpp \
-  ../src/Rendering/Renderer.hpp \
   /usr/include/c++/11/memory \
   /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
@@ -884,6 +882,8 @@ CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.o: ../src/Events/Main.c
   /usr/include/c++/11/backward/auto_ptr.h \
   /usr/include/c++/11/pstl/glue_memory_defs.h \
   /usr/include/c++/11/pstl/execution_defs.h \
+  ../src/Events/EventManager.hpp \
+  ../src/Rendering/Renderer.hpp \
   ../SFML/include/SFML/Graphics.hpp \
   ../SFML/include/SFML/Window.hpp \
   ../SFML/include/SFML/System.hpp \

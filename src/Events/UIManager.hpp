@@ -1,9 +1,11 @@
 #include "Renderer.hpp"
-
+#include <memory>
 class UIManager {
 public:
-    UIManager(Renderer* i_renderer) {
+    UIManager(shared_ptr<Renderer> i_renderer) {
         this->renderer = i_renderer;
+        rightBarWidth = 100;
+        topBarHeight = 100;
     }
 
     vector<int> getGridScreenSpace() {
@@ -16,6 +18,7 @@ public:
     }
 
 private:
+
     void drawTopBar() {
         renderer->drawRect(0, 0, renderer->getPixelCountX() - rightBarWidth, topBarHeight, sf::Color(100, 100, 100, 255));
     }
@@ -24,7 +27,7 @@ private:
         renderer->drawRect(renderer->getPixelCountX() - rightBarWidth, 0, renderer->getPixelCountX(), renderer->getPixelCountY(), sf::Color(100, 100, 100, 255));
     }
 
-    int rightBarWidth = 100;
-    int topBarHeight = 100;
-    Renderer* renderer;
+    int rightBarWidth;
+    int topBarHeight;
+    shared_ptr<Renderer> renderer;
 };

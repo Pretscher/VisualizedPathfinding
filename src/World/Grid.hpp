@@ -4,6 +4,8 @@ class Grid {
 private:
     vector<sf::Color> nodes;
     int width, height;
+
+    Grid(){}
 public:
 
     //create plain colored grid
@@ -17,19 +19,19 @@ public:
     }
 
 
-    void draw(Renderer* renderer, vector<int>&& gridScreenSpace) const {
+    void draw(const Renderer& renderer, vector<int>&& gridScreenSpace) const {
         int screenWidth = gridScreenSpace[2] - gridScreenSpace[0];
         int screenHeight = gridScreenSpace[3] - gridScreenSpace[1];
         int xOffset = gridScreenSpace[0];
         int yOffset = gridScreenSpace[1];
 
-        renderer->drawRect(xOffset, yOffset, screenWidth, screenHeight, sf::Color::White);
+        renderer.drawRect(xOffset, yOffset, screenWidth, screenHeight, sf::Color::White);
         float nodeWidth = (float) screenWidth / this->width;
         float nodeHeight = (float) screenHeight / this->height;
         for(int y = 0; y < this->height; y++) {
             for(int x = 0; x < this->width; x++) {
                 int nodeX = xOffset + x * nodeWidth, nodeY = yOffset + y * nodeHeight;
-                renderer->drawRect(nodeX, nodeY, nodeWidth, nodeHeight, nodes[y * this->width + x]);
+                renderer.drawRect(nodeX, nodeY, nodeWidth, nodeHeight, nodes[y * this->width + x]);
             }
         }
     }

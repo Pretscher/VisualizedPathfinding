@@ -4,7 +4,7 @@
 #include <math.h>
 //Call this-----------------------------------------------------------------------------------------------------------
 
-Renderer::Renderer(sf::RenderWindow* window) {
+Renderer::Renderer(shared_ptr<sf::RenderWindow> window) {
     currentWindow = window;
     //SFML always uses the dimensions of window creation, thus we can set them here and never change them again.
     xPixels = currentWindow->getSize().x;
@@ -14,7 +14,7 @@ Renderer::Renderer(sf::RenderWindow* window) {
 
 //Drawing functions-------------------------------------------------------------------------------------------------------
 
-void Renderer::drawRect(float x, float y, float width, float height, sf::Color c) {
+void Renderer::drawRect(float x, float y, float width, float height, sf::Color c) const {
     sf::RectangleShape square(sf::Vector2f(width, height));
 
     square.setFillColor(c);
@@ -23,7 +23,7 @@ void Renderer::drawRect(float x, float y, float width, float height, sf::Color c
 }
 
 
-void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness) {
+void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness) const {
     int unusedHelp = 0;//we dont need to write 2 values but only have functions for 2 values (lazyness)
 
     sf::RectangleShape square(sf::Vector2f(width - thickness, height -  2 * thickness));
@@ -36,7 +36,7 @@ void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c,
     currentWindow->draw(square);
 }
 
-void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness) {
+void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness) const {
     int unusedHelp = 0;//we dont need to write 2 values but only have functions for 2 values (lazyness)
 
     sf::CircleShape circle(radius);
@@ -52,7 +52,7 @@ void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int 
     currentWindow->draw(circle);
 }
 
-void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickness) {
+void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickness) const {
     float dX = x2 - x1;
     float dY = y2 - y1;
     int ht = thickness / 2;
@@ -68,7 +68,7 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickne
     currentWindow->draw(line);
 }
 
-void Renderer::getMousePos(int& o_xs, int& o_ys, bool factorInBorders) {
+void Renderer::getMousePos(int& o_xs, int& o_ys, bool factorInBorders) const {
     auto pos = sf::Mouse::getPosition(*currentWindow);
     int x = pos.x;
     int y = pos.y;
@@ -105,7 +105,7 @@ sf::Texture Renderer::loadTexture(string path, bool repeat) {
 }
 
 
-void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Texture texture) {
+void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Texture texture) const {
     sf::RectangleShape square(sf::Vector2f(width, height));
     
     square.setTexture(&texture);
@@ -119,7 +119,7 @@ void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Text
     currentWindow->draw(square);
 }
 
-void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) {
+void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
     sf::Text text;
 
     sf::Font font;
@@ -170,7 +170,7 @@ void Renderer::drawText(string i_text, int x, int y, int width, int height, int 
     currentWindow->draw(text);
 }
 
-void Renderer::transform(sf::Transformable& tranformable, float x, float y) {
+void Renderer::transform(sf::Transformable& tranformable, float x, float y) const {
     tranformable.setPosition(x, y);
 }
 
