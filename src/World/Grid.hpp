@@ -2,56 +2,62 @@
 
 class Grid {
 private:
-    vector<sf::Color> nodes;
-    int width, height;
-
+    vector<sf::RectangleShape> nodes;
+    int cols, rows;
+    sf::Color defaultColor;
     Grid(){}
+    vector<int> screenDimensions;
 public:
 
     //create plain colored grid
-    Grid(int width, int height, sf::Color defaultColor) {
-        this->width = width; this->height = height;
-        //create an appropriately sized vector with only white colored pixels only
-        nodes.reserve(width * height);
-        for(int i = 0; i < width * height; i++) {
-            nodes.push_back(defaultColor);
-        }
+    Grid(int cols, int rows, vector<int>&& screenDimensions, sf::Color defaultColor, const Renderer& renderer) {
+        this->cols = cols;
+        this->rows = rows;
+
+        this->defaultColor = defaultColor;
+        this->screenDimensions = screenDimensions;
+        initDrawing(renderer);
     }
 
+    void initDrawing(const Renderer& renderer) {
+        nodes.reserve(cols * rows);
+        float nodeWidth = (float) screenDimensions[2] / this->cols;
+        float nodeHeight = (float) screenDimensions[3] / this->rows;
 
-    void draw(const Renderer& renderer, vector<int>&& gridScreenSpace) const {
-        int screenWidth = gridScreenSpace[2] - gridScreenSpace[0];
-        int screenHeight = gridScreenSpace[3] - gridScreenSpace[1];
-        int xOffset = gridScreenSpace[0];
-        int yOffset = gridScreenSpace[1];
+        for(int y = 0; y < rows; y ++) {
+            for(int x = 0; x < cols; x++) {
+                float nodeX = screenDimensions[0] + x * nodeWidth;
+                float nodeY = screenDimensions[1] + y * nodeHeight;
 
-        renderer.drawRect(xOffset, yOffset, screenWidth, screenHeight, sf::Color::White);
-        float nodeWidth = (float) screenWidth / this->width;
-        float nodeHeight = (float) screenHeight / this->height;
-        for(int y = 0; y < this->height; y++) {
-            for(int x = 0; x < this->width; x++) {
-                int nodeX = xOffset + x * nodeWidth, nodeY = yOffset + y * nodeHeight;
-                renderer.drawRect(nodeX, nodeY, nodeWidth, nodeHeight, nodes[y * this->width + x]);
+                nodes.push_back(renderer.createRect(nodeX, nodeY, nodeWidth, nodeHeight, defaultColor));
             }
         }
     }
 
+    void draw(const Renderer& renderer) {
 
-    inline sf::Color getPixel(int x, int y) const {
-        return nodes[y * width + x];
+        renderer.drawRect(screenDimensions[0], screenDimensions[1],  screenDimensions[2], screenDimensions[3], sf::Color::White);//background
+        for(int i = 0; i < nodes.size(); i++) {
+            renderer.currentWindow->draw(nodes[i]);
+        }
+    }
+
+
+    inline sf::Color getPixelColor(int x, int y) const {
+        return nodes[y * cols + x].getFillColor();
     }
 
     inline void setPixel(int x, int y, sf::Color rgb) {
-        calculateWhiteCounter(nodes[y * width + x], rgb);
-        nodes[y * width + x] = rgb;
+        calculateWhiteCounter(nodes[y * cols + x].getFillColor(), rgb);
+        nodes[y * cols + x].setFillColor(rgb);
     }
 
-    inline int getWidth() const {
-        return width;
+    inline int getCols() const {
+        return cols;
     }
 
-    inline int getHeight() const {
-        return height;
+    inline int getRows() const {
+        return rows;
     }
 
     inline int getNonWhiteCount() const {

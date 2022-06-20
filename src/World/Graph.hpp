@@ -26,8 +26,8 @@ public:
     void generateFromGrid(Grid& grid) {
         auto startTime = std::chrono::high_resolution_clock::now();
 
-        this->width =  grid.getWidth();
-        this->height = grid.getHeight();
+        this->width =  grid.getCols();
+        this->height = grid.getRows();
 
         int nodeCount = width * height;
         int useableNodeCount = nodeCount - grid.getNonWhiteCount();
@@ -46,7 +46,7 @@ public:
             for(int x = 0; x < this->width; x ++) {
                 int nodeIndex = x + y * this->width;
                 //Current definition of a useable node: it is white in the grid object
-                bool isUseable = grid.getPixel(x, y) == sf::Color::White;
+                bool isUseable = grid.getPixelColor(x, y) == sf::Color::White;
                 if(isUseable) {
                     GraphNode* cNode = new GraphNode(x, y, neighbourCountMean, nodes.size(), nodeIndex);
                     //only put node into array if useable, else nullptr
@@ -70,14 +70,7 @@ public:
     }
 
     inline GraphNode* getIndexFromCoords(int x, int y) {
-        GraphNode* node = fullGraph[y * width + x];
-        #if DEBUG
-        if(node == nullptr) {
-            std::cout << "Error in 'getIndexFromCoords': GraphNode at coordinates x = " << x << ", y = " << y << " does not exist.\n";
-                std::exit(0);
-        }
-        #endif
-        return node;
+        return fullGraph[y * width + x];
     }
 
 
@@ -95,6 +88,12 @@ private:
         }
     }
 
+    /**
+     * @brief Can be called with nullptr nodes, it is actually part of the algorithm to do that.
+     * 
+     * @param node1 
+     * @param node2 
+     */
     inline void trylinkingGraphNodes(GraphNode* node1, GraphNode* node2) {
         //this is not a safety measure, this case WILL OCCUR because if the node is a nullptr it is not useable.
         if(node1 != nullptr && node2 != nullptr) {

@@ -4,7 +4,7 @@
 #include <math.h>
 //Call this-----------------------------------------------------------------------------------------------------------
 
-Renderer::Renderer(shared_ptr<sf::RenderWindow> window) {
+Renderer::Renderer(sf::RenderWindow* window) {
     currentWindow = window;
     //SFML always uses the dimensions of window creation, thus we can set them here and never change them again.
     xPixels = currentWindow->getSize().x;
@@ -22,6 +22,12 @@ void Renderer::drawRect(float x, float y, float width, float height, sf::Color c
     currentWindow->draw(square);
 }
 
+sf::RectangleShape Renderer::createRect(float x, float y, float width, float height, sf::Color c) const {
+    sf::RectangleShape square(sf::Vector2f(width, height));
+    square.setFillColor(c);
+    transform(square, x, y);
+    return square;
+}
 
 void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness) const {
     int unusedHelp = 0;//we dont need to write 2 values but only have functions for 2 values (lazyness)

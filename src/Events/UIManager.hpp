@@ -2,7 +2,7 @@
 #include <memory>
 class UIManager {
 public:
-    UIManager(shared_ptr<Renderer> i_renderer) {
+    UIManager(Renderer* i_renderer) {
         this->renderer = i_renderer;
         rightBarWidth = 100;
         topBarHeight = 100;
@@ -29,5 +29,5 @@ private:
 
     int rightBarWidth;
     int topBarHeight;
-    shared_ptr<Renderer> renderer;
+    Renderer* renderer;
 };

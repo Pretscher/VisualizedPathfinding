@@ -6,8 +6,8 @@ using namespace std;
 class Renderer {
 public:
     //Memory of this object has to be externally managed.
-    shared_ptr<sf::RenderWindow> currentWindow;
-    Renderer(shared_ptr<sf::RenderWindow> window);
+    sf::RenderWindow* currentWindow;
+    Renderer(sf::RenderWindow* window);
     void drawRect(float x, float y, float width, float height, sf::Color c) const;
     void drawRectOutline(int x, int y, int width, int height, sf::Color c, int thickness) const;
     void drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness) const;
@@ -29,6 +29,7 @@ public:
         return yPixels;
     }
 
+    sf::RectangleShape createRect(float x, float y, float width, float height, sf::Color c) const;
 protected:
     virtual void transform(sf::Transformable& tranformable, float x, float y) const;
 

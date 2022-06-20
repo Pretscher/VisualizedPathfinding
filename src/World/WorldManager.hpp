@@ -3,11 +3,11 @@
 #include <memory>
 class WorldManager {
 public:
-    unique_ptr<Grid> grid;
+    Grid* grid;
     unique_ptr<Graph> g;
     unique_ptr<Algorithm> algorithm;
-    WorldManager() {
-        grid = make_unique<Grid>(192, 108, sf::Color::White);
+    WorldManager(Grid* grid) {
+        this->grid = grid;
         g = make_unique<Graph>();
         createTestGrid(100);
         g->generateFromGrid(*grid);
@@ -36,18 +36,18 @@ public:
     }
 
     void draw(const Renderer& renderer, vector<int>&& gridScreenSpace) {
-        grid->draw(renderer, move(gridScreenSpace));
+        grid->draw(renderer);
     }
 
 private:
     void createTestGrid(int randomDegree) {
-        for(int x = 0; x < grid->getWidth(); x ++) {
-            for(int y = 0; y < grid->getHeight(); y ++) {
+        for(int y = 0; y < grid->getRows(); y ++) {
+            for(int x = 0; x < grid->getCols(); x ++) {
                 int random_variable = std::rand() % randomDegree;         
-                if(random_variable == 0) {
-                    grid->setPixel(x, y, sf::Color::Black);
+                    if(random_variable == 0) {
+                        grid->setPixel(x, y, sf::Color::Black);
+                    }
                 }
             }
         }
-    }
 };

@@ -5,14 +5,15 @@
 class EventManager {
 public:
     //Memory of this object has to be externally managed.
-    shared_ptr<Renderer> renderer;
-    unique_ptr<UIManager> uiManager;
-
-    WorldManager worldManager;
-    EventManager(shared_ptr<Renderer> i_renderer) {
+    Renderer* renderer;
+    UIManager* uiManager;
+    WorldManager* worldManager;
+    EventManager(Renderer* i_renderer) {
         std::srand(std::time(nullptr));
         this->renderer = i_renderer;
-        this->uiManager = make_unique<UIManager>(renderer);
+        this->uiManager = new UIManager(renderer);
+        Grid* g = new Grid(192, 108, uiManager->getGridScreenSpace(), sf::Color::White, *renderer);
+        this->worldManager = new WorldManager(g);
         init();
     }
 
@@ -36,17 +37,17 @@ public:
     }
 
     void init() {
-        auto path = worldManager.findPath(0, 0, 50, 50);
-        worldManager.addPathToGrid(path);
+        auto path = worldManager->findPath(0, 0, 50, 50);
+        worldManager->addPathToGrid(path);
     }
 
     void eventloop() {
-        worldManager.update();
+        worldManager->update();
 
     }
 
     void drawingloop() {
-        worldManager.draw(*renderer, uiManager->getGridScreenSpace());
+        worldManager->draw(*renderer, uiManager->getGridScreenSpace());
         uiManager->draw();
     }
 };

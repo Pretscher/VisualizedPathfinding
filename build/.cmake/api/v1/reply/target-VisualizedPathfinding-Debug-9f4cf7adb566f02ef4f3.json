@@ -85,8 +85,8 @@
 				2,
 				6,
 				7,
-				9,
-				11
+				10,
+				12
 			]
 		}
 	],
@@ -152,8 +152,8 @@
 				2,
 				6,
 				7,
-				9,
-				11
+				10,
+				12
 			]
 		},
 		{
@@ -165,12 +165,13 @@
 				4,
 				5,
 				8,
-				10,
-				12,
+				9,
+				11,
 				13,
 				14,
 				15,
-				16
+				16,
+				17
 			]
 		}
 	],
@@ -223,6 +224,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/Events/UIManager.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/Rendering/Button.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
