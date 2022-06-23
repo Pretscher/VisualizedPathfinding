@@ -95,7 +95,7 @@ float Algorithm::getHeuristic(GraphNode* start, GraphNode* goal) {
 vector<Point> Algorithm::retrievePath(GraphNode* startNode, GraphNode* goalNode) {
 	int pathLenght = goalNode->getDistanceTravelled();
 	vector<Point> path;
-	path.resize(pathLenght);//can this be repalced by reserve()?
+	path.resize(pathLenght + 1);//can this be repalced by reserve()?
 	//put path indices into path array from end to front
 	const GraphNode* cNode = goalNode;
 	while (true) {
