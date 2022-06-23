@@ -4,12 +4,10 @@
 #include <math.h>
 //Call this-----------------------------------------------------------------------------------------------------------
 
-Renderer::Renderer(sf::RenderWindow* window) {
-    currentWindow = window;
-    //SFML always uses the dimensions of window creation, thus we can set them here and never change them again.
-    xPixels = currentWindow->getSize().x;
-    yPixels = currentWindow->getSize().y;
-    currentWindow->setFramerateLimit(60);
+Renderer::Renderer(sf::RenderWindow& window) : currentWindow(window) {
+     xPixels = currentWindow.getSize().x;
+    yPixels = currentWindow.getSize().y;
+    currentWindow.setFramerateLimit(60);
 }
 
 //Drawing functions-------------------------------------------------------------------------------------------------------
@@ -19,7 +17,7 @@ void Renderer::drawRect(float x, float y, float width, float height, sf::Color c
 
     square.setFillColor(c);
     transform(square, x, y);
-    currentWindow->draw(square);
+    currentWindow.draw(square);
 }
 
 sf::RectangleShape Renderer::createRect(float x, float y, float width, float height, sf::Color c) const {
@@ -39,7 +37,7 @@ void Renderer::drawRectOutline(int x, int y, int width, int height, sf::Color c,
 
     transform(square, x, y);
 
-    currentWindow->draw(square);
+    currentWindow.draw(square);
 }
 
 void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int outlineThickness) const {
@@ -55,7 +53,7 @@ void Renderer::drawCircle(int x, int y, int radius, sf::Color c, bool fill, int 
         circle.setFillColor(sf::Color(0, 0, 0, 0));
     }
     transform(circle, x, y);
-    currentWindow->draw(circle);
+    currentWindow.draw(circle);
 }
 
 void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickness) const {
@@ -71,11 +69,11 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickne
     line.setRotation(rot);
     line.setFillColor(c);
 
-    currentWindow->draw(line);
+    currentWindow.draw(line);
 }
 
 void Renderer::getMousePos(int& o_xs, int& o_ys, bool factorInBorders) const {
-    auto pos = sf::Mouse::getPosition(*currentWindow);
+    auto pos = sf::Mouse::getPosition(currentWindow);
     int x = pos.x;
     int y = pos.y;
 
@@ -122,7 +120,7 @@ void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Text
         square.setTextureRect(rect);
     }//else stretch
 
-    currentWindow->draw(square);
+    currentWindow.draw(square);
 }
 
 void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
@@ -167,13 +165,13 @@ void Renderer::drawText(string i_text, int x, int y, int width, int height, int 
     rect.left = ((float)width / 2.0f) - (rect.width / 2.0f);
     rect.top = ((float)height / 2.0f) - ((float)MaxHeight / 2.0f) - (rect.height - MaxHeight) + ((rect.height - CharacterSize) / 2.0f);
 
-    int l = rect.left - (currentWindow->getSize().x / 385);
-    int t = rect.top - (currentWindow->getSize().y / 72);
+    int l = rect.left - (currentWindow.getSize().x / 385);
+    int t = rect.top - (currentWindow.getSize().y / 72);
 
     text.setPosition(l + x, t + y);
 
    // text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    currentWindow->draw(text);
+    currentWindow.draw(text);
 }
 
 void Renderer::transform(sf::Transformable& tranformable, float x, float y) const {

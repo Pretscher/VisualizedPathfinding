@@ -9,15 +9,15 @@ void VsRenderer::linkViewSpace(shared_ptr<int[]> io_viewSpace, shared_ptr<const 
 }
 
 int VsRenderer::getWorldXs() {
-    return currentWindow->getSize().x + viewSpaceLimits[1];
+    return currentWindow.getSize().x + viewSpaceLimits[1];
 }
 
 int VsRenderer::getWorldYs() {
-    return currentWindow->getSize().y + viewSpaceLimits[0];
+    return currentWindow.getSize().y + viewSpaceLimits[0];
 }
 
 void VsRenderer::getMousePos(int& o_xs, int& o_ys, bool factorInViewspace, bool factorInBorders) {
-    auto pos = sf::Mouse::getPosition(*currentWindow);
+    auto pos = sf::Mouse::getPosition(currentWindow);
     int x = pos.x;
     int y = pos.y;
 
@@ -49,7 +49,7 @@ void VsRenderer::getMousePos(int& o_xs, int& o_ys, bool factorInViewspace, bool 
 }
 
 void VsRenderer::updateViewSpace() {
-    auto size = currentWindow->getSize();
+    auto size = currentWindow.getSize();
 
     int moveSpeed = 30;
     

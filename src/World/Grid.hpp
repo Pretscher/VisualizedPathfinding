@@ -5,21 +5,20 @@ private:
     vector<sf::RectangleShape> nodes;
     int cols, rows;
     sf::Color defaultColor;
-    Grid(){}
     vector<int> screenDimensions;
+    Renderer& renderer;
 public:
-
     //create plain colored grid
-    Grid(int cols, int rows, vector<int>&& screenDimensions, sf::Color defaultColor, const Renderer& renderer) {
+    Grid(int cols, int rows, vector<int>&& screenDimensions, sf::Color defaultColor, Renderer& i_renderer) : renderer(i_renderer) {
         this->cols = cols;
         this->rows = rows;
 
         this->defaultColor = defaultColor;
         this->screenDimensions = screenDimensions;
-        initDrawing(renderer);
+        initDrawing();
     }
 
-    void initDrawing(const Renderer& renderer) {
+    void initDrawing() {
         nodes.reserve(cols * rows);
         float nodeWidth = (float) screenDimensions[2] / this->cols;
         float nodeHeight = (float) screenDimensions[3] / this->rows;
@@ -34,11 +33,10 @@ public:
         }
     }
 
-    void draw(const Renderer& renderer) {
-
+    void draw() {
         renderer.drawRect(screenDimensions[0], screenDimensions[1],  screenDimensions[2], screenDimensions[3], sf::Color::White);//background
         for(int i = 0; i < nodes.size(); i++) {
-            renderer.currentWindow->draw(nodes[i]);
+            renderer.currentWindow.draw(nodes[i]);
         }
     }
 

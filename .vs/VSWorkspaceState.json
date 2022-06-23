@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\Events"
+    "\\src\\Algorithm",
+    "\\src\\Events",
+    "\\src\\Rendering",
+    "\\src\\World"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\CMakeSettings.json",
   "PreviewInSolutionExplorer": false
 }
