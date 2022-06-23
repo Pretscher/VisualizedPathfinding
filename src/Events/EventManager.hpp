@@ -38,7 +38,6 @@ public:
 
     void eventloop() {
         worldManager.update();
-
     }
 
     void drawingloop() {

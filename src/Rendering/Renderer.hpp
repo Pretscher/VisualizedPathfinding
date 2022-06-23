@@ -30,6 +30,7 @@ public:
     }
 
     sf::RectangleShape createRect(float x, float y, float width, float height, sf::Color c) const;
+    sf::Text createText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const;
 protected:
     virtual void transform(sf::Transformable& tranformable, float x, float y) const;
 

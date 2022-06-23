@@ -1,10 +1,12 @@
 #include "Renderer.hpp"
+#include "Button.hpp"
 #include <memory>
 class UIManager {
 public:
     UIManager(Renderer& i_renderer) : renderer(i_renderer) {
         rightBarWidth = 100;
         topBarHeight = 100;
+        buttons.push_back(Button(10, 10, 100, 20, sf::Color(200, 200, 200), renderer.createText("Set Startpoint", 10, 10, 100, 20, 5, sf::Color::Black)));
     }
 
     vector<int> getGridScreenSpace() {
@@ -14,6 +16,9 @@ public:
     void draw() {
         drawTopBar();
         drawRigthBar();
+        for(Button b : buttons) {
+            b.draw(renderer);
+        }
     }
 
 private:
@@ -29,4 +34,5 @@ private:
     int rightBarWidth;
     int topBarHeight;
     Renderer& renderer;
+    vector<Button> buttons;
 };

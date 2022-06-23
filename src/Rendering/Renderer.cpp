@@ -123,11 +123,62 @@ void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Text
     currentWindow.draw(square);
 }
 
+sf::Text Renderer::createText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
+    sf::Text text;
+
+    sf::Font font;
+    if (!font.loadFromFile("SFML/Fonts/calibri.ttf"))
+    {
+        cout << "error loading font.";
+    }
+
+    // select the font
+    text.setFont(font); // font is a sf::Font
+    text.setString(i_text);
+
+
+    int unusedHelp = 0;
+    text.setFillColor(color);
+    text.setCharacterSize(charSize);
+
+    size_t CharacterSize = text.getCharacterSize();
+
+
+    string String = text.getString().toAnsiString();
+    bool bold = (text.getStyle() == sf::Text::Bold);
+    size_t MaxHeight = 0;
+
+    for (size_t x = 0; x < text.getString().getSize(); x++)
+    {
+        sf::Uint32 Character = String.at(x);
+
+        const sf::Glyph& CurrentGlyph = font.getGlyph(Character, CharacterSize, bold);
+
+        size_t Height = CurrentGlyph.bounds.height;
+
+        if (MaxHeight < Height)
+            MaxHeight = Height;
+    }
+
+    sf::FloatRect rect = text.getGlobalBounds();
+
+    rect.left = ((float)width / 2.0f) - (rect.width / 2.0f);
+    rect.top = ((float)height / 2.0f) - ((float)MaxHeight / 2.0f) - (rect.height - MaxHeight) + ((rect.height - CharacterSize) / 2.0f);
+
+    int l = rect.left - (currentWindow.getSize().x / 385);
+    int t = rect.top - (currentWindow.getSize().y / 72);
+
+    text.setPosition(l + x, t + y);
+
+   // text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+   return text;
+}
+
 void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
     sf::Text text;
 
     sf::Font font;
-    if (!font.loadFromFile("myRecources/Calibri Regular.ttf"))
+    if (!font.loadFromFile("SFML/Fonts/calibri.ttf"))
     {
         cout << "error loading font.";
     }
