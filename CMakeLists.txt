@@ -13,16 +13,23 @@ file(GLOB allFiles
 include_directories(${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World ${PROJECT_SOURCE_DIR}/src/Algorithm)
 
 set(SFML_STATIC_LIBRARIES TRUE)
+#This project includes build versions of the SFML library for common compilers for convenience. 
 if (BUILD_32)
-    set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_Windows_x86/lib/cmake/SFML")
+    if(WIN32)#Windows x86
+        set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_Windows_x86/lib/cmake/SFML")
+    endif()
 else ()
-    if(WIN32)
+    if(WIN32) #Windows #64
         set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_Windows_x64/lib/cmake/SFML")
     endif()
-    if(UNIX) 
-        set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_Unix_x64/lib/cmake/SFML")
+    if(MINGW) #Windows MingW64
+        set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_MingW_x64/lib/cmake/SFML")
     endif()
 endif ()
+
+if(UNIX) #Unix GCC x64
+    set(SFML_DIR "${PROJECT_SOURCE_DIR}/SFML/SFML_Unix_x64/lib/cmake/SFML")
+endif()
 
 find_package(SFML 2.5.1 REQUIRED COMPONENTS graphics window system) #find SFML
 include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}/SFML_Win32/bin) #include SFML and dlls
