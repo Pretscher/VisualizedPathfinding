@@ -61,6 +61,19 @@ public:
     inline int getNonWhiteCount() const {
         return nonWhiteCount;
     }
+
+    inline sf::Vector2f getNodeSize() {
+        return sf::Vector2f((float) screenDimensions[2] / this->cols, (float) screenDimensions[3] / this->rows);
+    }
+
+    inline vector<int>& getScreenDimensions() {
+        return screenDimensions;
+    }
+
+    sf::RectangleShape& getNode(int col, int row) {
+        return nodes[row * cols + col];
+    }
+
 private:
     int nonWhiteCount = 0;
     inline void calculateWhiteCounter(sf::Color oldRgb, sf::Color newRgb) {

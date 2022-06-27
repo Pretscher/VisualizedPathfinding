@@ -10,7 +10,7 @@ file(GLOB allFiles
 )
 #find_package(SFML 2 REQUIRED graphics window system)
 
-include_directories(${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World ${PROJECT_SOURCE_DIR}/src/Algorithm)
+include_directories(${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/src/Rendering ${PROJECT_SOURCE_DIR}/src/World ${PROJECT_SOURCE_DIR}/src/Algorithm ${PROJECT_SOURCE_DIR}/src/Events)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 #This project includes build versions of the SFML library for common compilers for convenience. 
@@ -37,3 +37,4 @@ include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}/SFML_Win32/bin) #i
 add_executable(VisualizedPathfinding ${allFiles})
 target_link_libraries (VisualizedPathfinding sfml-graphics sfml-window sfml-system -pthread)
 
+file(COPY recources DESTINATION .)

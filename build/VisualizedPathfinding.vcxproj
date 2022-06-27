@@ -87,7 +87,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -103,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SFML_STATIC;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -145,10 +145,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -171,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -187,10 +187,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -213,7 +213,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -228,10 +228,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SFML_STATIC;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML\SFML_Windows_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -315,8 +315,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\BinaryHeap.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\BinaryHeap.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\HeapNode.hpp" />
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\Event.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\EventManager.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\Main.cpp" />
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\SelectGridNode.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\Button.hpp" />

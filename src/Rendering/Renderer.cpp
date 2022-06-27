@@ -71,21 +71,27 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickne
 
     currentWindow.draw(line);
 }
-
-void Renderer::getMousePos(int& o_xs, int& o_ys, bool factorInBorders) const {
+/**
+ * @brief returns the current mouse position
+*  SIDE EFFECTS: actualizes the lastMousePos field if called with "factorInBorders = true"
+ * 
+ * @param factorInBorders if the mouse leaves the window, the last mouse pos that was called with "factorInBordes = true" will be returned
+ * @return sf::Vector2i 
+ */
+ sf::Vector2i Renderer::getMousePos(bool factorInBorders) {
     auto pos = sf::Mouse::getPosition(currentWindow);
-    int x = pos.x;
-    int y = pos.y;
 
     if (factorInBorders == true) {
-        if (x < xPixels && y < yPixels) {
-                o_xs = x;
-                o_ys = y;
+        if (pos.x < xPixels && pos.y < yPixels) {
+            lastMousePos = sf::Vector2i(pos.x, pos.y);//if the mouse leaves the window, the last mouse pos that was called with "factorInBordes = true" will be returned
+            return sf::Vector2i(pos.x, pos.y);
+        }
+        else {
+            return lastMousePos; 
         }
     }
     else {
-        o_xs = x;
-        o_ys = y;
+        return sf::Vector2i(pos.x, pos.y);
     }
 }
 
@@ -123,103 +129,55 @@ void Renderer::drawRectWithTexture(int x, int y, int width, int height, sf::Text
     currentWindow.draw(square);
 }
 
-sf::Text Renderer::createText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
-    sf::Text text;
-
-    sf::Font font;
-    if (!font.loadFromFile("SFML/Fonts/calibri.ttf"))
-    {
-        cout << "error loading font.";
+sf::Font& Renderer::getFont(string fontName) {
+    if(loadedFonts.count(fontName) == 0) {//if font not already in set, load it
+        sf::Font font;
+        if (!font.loadFromFile("C:/Users/Julian/source/repos/Pretscher/VisualizedPathfinding/recources/Fonts/" + fontName + ".ttf")) {
+            cout << "ERROR loading font. Text will not be displayed. \n";
+            //DO NOT select a font if there was an error loading, will cause in crash when trying to draw the text
+            std::exit(-1);
+        }
+        else {
+            loadedFonts[fontName] = font;
+            return loadedFonts[fontName];//retrieve from map so that the reference persists
+        }
     }
-
-    // select the font
-    text.setFont(font); // font is a sf::Font
-    text.setString(i_text);
-
-
-    int unusedHelp = 0;
-    text.setFillColor(color);
-    text.setCharacterSize(charSize);
-
-    size_t CharacterSize = text.getCharacterSize();
-
-
-    string String = text.getString().toAnsiString();
-    bool bold = (text.getStyle() == sf::Text::Bold);
-    size_t MaxHeight = 0;
-
-    for (size_t x = 0; x < text.getString().getSize(); x++)
-    {
-        sf::Uint32 Character = String.at(x);
-
-        const sf::Glyph& CurrentGlyph = font.getGlyph(Character, CharacterSize, bold);
-
-        size_t Height = CurrentGlyph.bounds.height;
-
-        if (MaxHeight < Height)
-            MaxHeight = Height;
+    else {
+        return loadedFonts[fontName];
     }
-
-    sf::FloatRect rect = text.getGlobalBounds();
-
-    rect.left = ((float)width / 2.0f) - (rect.width / 2.0f);
-    rect.top = ((float)height / 2.0f) - ((float)MaxHeight / 2.0f) - (rect.height - MaxHeight) + ((rect.height - CharacterSize) / 2.0f);
-
-    int l = rect.left - (currentWindow.getSize().x / 385);
-    int t = rect.top - (currentWindow.getSize().y / 72);
-
-    text.setPosition(l + x, t + y);
-
-   // text.setStyle(sf::Text::Bold | sf::Text::Underlined);
-   return text;
 }
 
-void Renderer::drawText(string i_text, int x, int y, int width, int height, int charSize, sf::Color color) const {
+#include <sstream>
+void Renderer::drawText(string i_text, string fontName, int x, int y, int width, int height, int charSize, sf::Color color) {
     sf::Text text;
-
-    sf::Font font;
-    if (!font.loadFromFile("SFML/Fonts/calibri.ttf"))
-    {
-        cout << "error loading font.";
-    }
-
-    // select the font
-    text.setFont(font); // font is a sf::Font
+    sf::Font& font = getFont(fontName);
+    text.setFont(font);
     text.setString(i_text);
-
-
-    int unusedHelp = 0;
     text.setFillColor(color);
     text.setCharacterSize(charSize);
 
-    size_t CharacterSize = text.getCharacterSize();
-
-
-    string String = text.getString().toAnsiString();
+    string temp = text.getString().toAnsiString();
     bool bold = (text.getStyle() == sf::Text::Bold);
-    size_t MaxHeight = 0;
 
-    for (size_t x = 0; x < text.getString().getSize(); x++)
+    int maxHeight = 0;
+    for (int x = 0; x < text.getString().getSize(); x++)
     {
-        sf::Uint32 Character = String.at(x);
+        sf::Uint32 Character = temp.at(x);
+        const sf::Glyph& CurrentGlyph = font.getGlyph(Character, charSize, bold);
 
-        const sf::Glyph& CurrentGlyph = font.getGlyph(Character, CharacterSize, bold);
+        int Height = CurrentGlyph.bounds.height;
 
-        size_t Height = CurrentGlyph.bounds.height;
-
-        if (MaxHeight < Height)
-            MaxHeight = Height;
+        if (maxHeight < Height) {
+            maxHeight = Height;
+        }
     }
 
     sf::FloatRect rect = text.getGlobalBounds();
 
-    rect.left = ((float)width / 2.0f) - (rect.width / 2.0f);
-    rect.top = ((float)height / 2.0f) - ((float)MaxHeight / 2.0f) - (rect.height - MaxHeight) + ((rect.height - CharacterSize) / 2.0f);
+    rect.left = ((float)width / 2) - (rect.width / 2);
+    rect.top = ((float)height / 2) - ((float)maxHeight / 2) - (rect.height - maxHeight) + (((float)rect.height - (charSize * 1.5))) / 2;
 
-    int l = rect.left - (currentWindow.getSize().x / 385);
-    int t = rect.top - (currentWindow.getSize().y / 72);
-
-    text.setPosition(l + x, t + y);
+    text.setPosition(rect.left + x, rect.top  + y);
 
    // text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     currentWindow.draw(text);

@@ -67,7 +67,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -77,7 +77,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -87,7 +87,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -97,7 +97,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\World;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events;C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\SFML_Win32\bin;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

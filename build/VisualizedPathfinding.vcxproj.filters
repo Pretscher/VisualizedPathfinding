@@ -30,7 +30,13 @@
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\HeapNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\Event.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\EventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\SelectGridNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.hpp">

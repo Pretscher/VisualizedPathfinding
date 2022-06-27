@@ -1,16 +1,28 @@
 #include "Renderer.hpp"
 #include "Button.hpp"
 #include <memory>
+#include <map>
+
 class UIManager {
 public:
     UIManager(Renderer& i_renderer) : renderer(i_renderer) {
         rightBarWidth = 100;
         topBarHeight = 100;
-        buttons.push_back(Button(10, 10, 100, 20, sf::Color(200, 200, 200), renderer.createText("Set Startpoint", 10, 10, 100, 20, 5, sf::Color::Black)));
+        buttons.push_back(Button(0, 0, 200, 100, sf::Color(200, 200, 200)));
+        buttons[0].setText("Set start", "calibri", sf::Color::Black, 30);
+        
+        buttons.push_back(Button(200, 0, 200, 100, sf::Color(200, 200, 200)));
+        buttons[1].setText("Set goal", "calibri", sf::Color::Black, 30);
     }
 
     vector<int> getGridScreenSpace() {
         return {0, topBarHeight, renderer.getPixelCountX() - rightBarWidth, renderer.getPixelCountY()};
+    }
+
+    void update() {
+        if(buttons[0].wasPressed(renderer) == true) {
+            
+        }
     }
 
     void draw() {
@@ -21,6 +33,7 @@ public:
         }
     }
 
+    int startNodeX, startNodeY, goalNodeX, goalNodeY;
 private:
 
     void drawTopBar() {
