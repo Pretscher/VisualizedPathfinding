@@ -8,10 +8,10 @@ public:
         setColor(color);
     }
 
-    int getX() {
+    int getX() const {
         return rect.getPosition().x;
     }
-    int getY() {
+    int getY() const {
         return rect.getPosition().y;
     }
 
@@ -28,7 +28,7 @@ public:
         this->text = text; this->fontName = fontName; this->textColor = textColor; this->fontSize = fontSize;
     }
 
-    void draw(Renderer& renderer) {
+    void draw(Renderer& renderer) const {
         renderer.draw(rect);
         renderer.drawText(text, fontName, rect.getPosition().x, rect.getPosition().y, rect.getSize().x, rect.getSize().y, fontSize, textColor);
     }
@@ -40,7 +40,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool isPressed(Renderer& renderer) {
+    bool isPressed(Renderer& renderer) const {
         auto mousePos = renderer.getMousePos(true);
         auto pos = rect.getPosition();
         auto size = rect.getSize();
@@ -54,7 +54,7 @@ public:
 
     /**
      * @brief Returns true if the Button was pressed since THE LAST CALL OF THIS FUNCTION
-     * 
+     * SIDE EFFECTS: Changes lastClickedCounter (counter used to distinguish different clicks)
      * @param renderer Needs the renderer and it's implemented mouse tracking functions
      * @return true 
      * @return false 

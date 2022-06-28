@@ -30,7 +30,7 @@ public:
     }
 
     sf::RectangleShape createRect(float x, float y, float width, float height, sf::Color c) const;
-    void draw(sf::Drawable& drawable) {
+    void draw(const sf::Drawable& drawable) const {
         currentWindow.draw(drawable);
     }
     
