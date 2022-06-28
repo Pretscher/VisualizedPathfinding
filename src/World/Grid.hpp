@@ -45,9 +45,22 @@ public:
         return nodes[y * cols + x].getFillColor();
     }
 
-    inline void setPixel(int x, int y, sf::Color rgb) {
-        calculateWhiteCounter(nodes[y * cols + x].getFillColor(), rgb);
-        nodes[y * cols + x].setFillColor(rgb);
+    inline void setPixel(int x, int y, sf::Color rgba) {
+        calculateWhiteCounter(nodes[y * cols + x].getFillColor(), rgba);
+        nodes[y * cols + x].setFillColor(rgba);
+    }
+
+    inline void addPixelColor(int x, int y, sf::Color rgba) {
+        sf::Color oldColor = nodes[y * cols + x].getFillColor();
+        sf::Color combinedColor;
+        if(oldColor == sf::Color::White) {
+            combinedColor = rgba;
+        } 
+        else {
+           combinedColor = sf::Color(oldColor.r + rgba.r, oldColor.g + rgba.g, oldColor.b + rgba.b, rgba.a);
+        }
+        calculateWhiteCounter(oldColor, combinedColor);
+        nodes[y * cols + x].setFillColor(combinedColor);
     }
 
     inline int getCols() const {

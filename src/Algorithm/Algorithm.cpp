@@ -48,7 +48,7 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 		//we will look through graph->getNeighbourIndices() of this node
 		for (int i = 0; i < cNeighbours.size(); i++) {
 			GraphNode* cNeighbour = cNeighbours[i];
-			if (cNeighbour->isUsedByMoveable() == false) {//efficient method to exclude moveable colision objects from graph
+		//	if (cNeighbour->isUsedByMoveable() == false) {//efficient method to exclude moveable colision objects from graph
 				float tempDistance = cNode->getDistanceTravelled() + cNode->getNeighbourCosts(i);
 				if (tempDistance < cNeighbour->getDistanceTravelled()) {
 					cNeighbour->setDistanceTravelled(tempDistance);
@@ -63,7 +63,7 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 						heap.decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
 					}
 				}
-			}
+		//	}
 		}
 	}
 	if (foundPath == true) {

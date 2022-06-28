@@ -27,10 +27,16 @@
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\BinaryHeap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\DrawnAstar.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\HeapNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\EventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\PathfindingManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.hpp">

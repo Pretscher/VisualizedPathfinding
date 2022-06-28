@@ -66,6 +66,8 @@ public:
                 cEvent++;
             }
         }
+
+        pathfindingManager.update();
     }
 
     void handleEventStarts() {

@@ -1,15 +1,34 @@
 #include "Algorithm.hpp"
+#include "DrawnAstar.hpp"
 class PathfindingManager {
 public:
     /**
      * @param i_graph used in algorithm. Edges have to be defined in Graph.
      * @param i_grid only used for drawing 
      */
-    PathfindingManager(Graph& i_graph, Grid& i_grid) : graph(i_graph), algorithm(i_graph), grid(i_grid) {
+    PathfindingManager(Graph& i_graph, Grid& i_grid) : graph(i_graph), grid(i_grid), aStar(i_graph), drawnAstar(i_graph, i_grid){
 
     }
 
+    void update() {
+        if(drawingPath == true) {
+            if(drawnAstar.isPathFound() == true) {
+                drawingPath = false;
+                auto path = drawnAstar.tryRetrievingPath();
+                if(path.size() == 0) {
+                    return;
+                }
+                else {
+                    swapPaths(path);//from here on out the path is drawn in drawPath()
+                }
+            }
+        }
+    }
+
     void drawPath() {
+        if(drawingPath == true) {
+            drawnAstar.updatePathFinding();
+        }
         //if path was changed, erase last path and insert new path
         if(changedPaths == true) {
             removePathFromGrid(lastPath);
@@ -34,9 +53,12 @@ public:
     void tryFindingPath() {
         if(startX != -1 && goalX != -1 && newCoordinates == true) {
             newCoordinates = false;//dont find the same path twice
-            lastPath = move(currentPath);//move because we reassign currentPath now
-            changedPaths = true;
-            currentPath = algorithm.findPath(startX, startY, goalX, goalY);
+            if(drawAstar == false) {
+                swapPaths(aStar.findPath(startX, startY, goalX, goalY));//find this path and instantly draw it completely in drawPath()
+            } else {
+                drawnAstar.initPathfinding(startX, startY, goalX, goalY);//has to be periodically called because this is an animation
+                drawingPath = true;
+            }
         }
     }
 
@@ -61,11 +83,21 @@ public:
         grid.setPixel(x, y, sf::Color::Red);
     }
 private:
+
+    void swapPaths(vector<Point> newPath) {
+        lastPath = move(currentPath);//move because we reassign currentPath now
+        currentPath = newPath;
+        changedPaths = true;
+    }
     Graph& graph;
     Grid& grid;
-    Algorithm algorithm;
+    Algorithm aStar;
+
+    bool drawAstar = true;
+    DrawnAstar drawnAstar;
+    bool drawingPath = false;
+
     vector<Point> currentPath;
-    
     vector<Point> lastPath;
     bool changedPaths = false;
 

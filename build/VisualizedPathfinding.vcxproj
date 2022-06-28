@@ -314,9 +314,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\Algorithm.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\BinaryHeap.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\BinaryHeap.hpp" />
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\DrawnAstar.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Algorithm\HeapNode.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\EventManager.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\Main.cpp" />
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\PathfindingManager.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\Button.hpp" />

@@ -89,6 +89,9 @@ private:
         if(node->getX() > 0 && nodeIndex - width - 1 >= 0) {
             trylinkingGraphNodes(node, fullGraph[nodeIndex - width - 1]);//top left
         }
+        if(node->getX() > 0 && nodeIndex - width + 1 >= 0 && ((nodeIndex - width + 1) % height != nodeIndex % height)) {//check if in the same row
+            trylinkingGraphNodes(node, fullGraph[nodeIndex - width + 1]);//top left
+        }
     }
 
     /**

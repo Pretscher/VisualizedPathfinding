@@ -11,7 +11,10 @@ public:
 		this->y = y;
 	}
 
-	Point() {}
+	Point() {
+		x = -1;
+		y = -1;
+	}
 	int x, y;
 };
 
@@ -22,9 +25,8 @@ public:
 	}
 
 	vector<Point> findPath(int startX, int startY, int goalX, int goalY);
-private:
+protected:
 	Graph graph;
 	inline float getHeuristic(GraphNode* start, GraphNode* goal);
-
 	vector<Point> retrievePath(GraphNode* startNode, GraphNode* goalNode);
 };
