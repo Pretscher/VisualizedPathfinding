@@ -8,13 +8,9 @@
 
 	void BinaryHeap::actualizeGraphIndex(int indexInHeap) {
 		int graphIndex = heap[indexInHeap].getIndexInGraph();
-		graph[graphIndex]->setHeapIndex(indexInHeap);
+		graph.setIndexInHeap(graphIndex, indexInHeap);
 	}
 
-	void BinaryHeap::dontReinsert(int indexInHeap) {
-		int graphIndex = heap[indexInHeap].getIndexInGraph();
-		graph[graphIndex]->setHeapIndex(-2);
-	}
 	//-------------------------------------------
 	//Heap methods
 
@@ -28,12 +24,10 @@
 
 	HeapNode BinaryHeap::extractMin() {
 		HeapNode copy = heap[0];
-		//delete heap[0];
 		//overwrite with last leaf of heap
-		dontReinsert(0);
 		if (heap.size() > 1) {
 			heap[0] = heap[heap.size() - 1];//copy pointer
-			heap.pop_back();//one of the two identical shared pointers in vector goes out of scope
+			heap.pop_back();
 			actualizeGraphIndex(0);
 			bubbleDown(0);
 		}
@@ -87,9 +81,9 @@
 			return;
 		}
 		int tempParentIndex = getParentIndex(indexOfNodeInHeap);
-		HeapNode& parent = heap[tempParentIndex];
+		HeapNode parent = heap[tempParentIndex];
 		int tempIndex = indexOfNodeInHeap;
-		HeapNode& tempNode = heap[indexOfNodeInHeap];
+		HeapNode tempNode = heap[indexOfNodeInHeap];
 
 		while (isRoot(tempIndex) == false && parent.getKey() > tempNode.getKey()) {
 			//swap node and parent

@@ -73,7 +73,10 @@ public:
         return fullGraph[y * width + x];
     }
 
-
+    void setIndexInHeap(int graphNodeIndex, int heapNodeIndex) {
+        nodes[graphNodeIndex]->setHeapIndex(heapNodeIndex);
+    }
+    
 private:
     inline void linkNeighbours(GraphNode* node) {
         int nodeIndex = node->getIndexInFullGraph();
@@ -101,4 +104,5 @@ private:
             node2->addNeighbour(node1, 1);
         }
     }
+
 };

@@ -1,6 +1,7 @@
 #include "Renderer.hpp"
 #include "WorldManager.hpp"
 #include "UIManager.hpp"
+#include "PathfindingManager.hpp"
 #include <memory>
 #include "EventObjects/SelectGridNode.hpp"
 #include <map>
@@ -11,7 +12,11 @@ public:
     Renderer& renderer;
     UIManager uiManager;
     WorldManager worldManager;
-    EventManager(Renderer& i_renderer) : renderer(i_renderer), uiManager(renderer), worldManager(Grid(192, 108, uiManager.getGridScreenSpace(), sf::Color::White, renderer)) {
+    PathfindingManager pathfindingManager;
+    EventManager(Renderer& i_renderer) : renderer(i_renderer),
+            uiManager(renderer),
+            worldManager(Grid(192, 108, uiManager.getGridScreenSpace(), sf::Color::White, renderer)),
+            pathfindingManager(worldManager.getGraph(), worldManager.getGrid()) {
         std::srand(std::time(nullptr));
         init();
     }
@@ -40,21 +45,22 @@ public:
      * Because the class is partially (pure) virtual, it has to be stored in a pointer.
      */
     map<string, Event*> events;
-    void init() {
-        auto path = worldManager.findPath(0, 0, 50, 50);
-        worldManager.addPathToGrid(path);
-    }
 
+    void init() {
+
+    }
 
     void eventloop() {
         worldManager.update();
         uiManager.update();
         handleEventStarts();
 
+        //update events
         for (auto cEvent = events.cbegin(); cEvent != events.cend()/* not hoisted */; /* no increment */) {
             cEvent->second->update();
             if (cEvent->second->isFinished()) {
                 handleEventExits(cEvent);
+                delete cEvent->second;
                 events.erase(cEvent++);
             } else {
                 cEvent++;
@@ -63,22 +69,25 @@ public:
     }
 
     void handleEventStarts() {
-        if(uiManager.buttons["Start"]->wasPressed(renderer)) {
-            events["Select start node"] = new SelectGridNode(renderer, worldManager.grid);
+        if(uiManager.buttons["select start node"]->wasPressed(renderer)) {
+            events["select start node"] = new SelectGridNode(renderer, worldManager.getGrid());
         }
-         if(uiManager.buttons["Goal"]->wasPressed(renderer)) {
-            events["Select goal node"] = new SelectGridNode(renderer, worldManager.grid);
+        if(uiManager.buttons["select goal node"]->wasPressed(renderer)) {
+            events["select goal node"] = new SelectGridNode(renderer, worldManager.getGrid());
+        }
+        if(uiManager.buttons["start pathfinding"]->wasPressed(renderer)) {
+            pathfindingManager.tryFindingPath();
         }
     }
 
+
     void handleEventExits(std::map<std::string, Event *>::const_iterator& exitingEvent) {
-        if(exitingEvent->first == "Select start node") {
-            cout << "Selected start node successfully.\n";
+        if(exitingEvent->first == "select start node") {
+            pathfindingManager.setStartPoint(exitingEvent->second->getData()[0], exitingEvent->second->getData()[1]);
         }
-        else if(exitingEvent->first == "Select goal node") {
-            cout << "Selected goal node successfully.\n";
+        else if(exitingEvent->first == "select goal node") {
+            pathfindingManager.setGoalPoint(exitingEvent->second->getData()[0], exitingEvent->second->getData()[1]);
         }
-        delete exitingEvent->second;
     }
 
     void drawingloop() {
@@ -87,5 +96,6 @@ public:
         for(auto const& cEvent : events) {
             cEvent.second->draw();
         }
+        pathfindingManager.drawPath();//if there is a path, draw it
     }
 };

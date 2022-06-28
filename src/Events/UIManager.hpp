@@ -10,11 +10,14 @@ public:
         topBarHeight = 100;
         
         //hard coded buttons, ALSO ACCESSED IN EVENTMANAGER
-        buttons["Start"] = new Button(0, 0, 200, 100, sf::Color(200, 200, 200));
-        buttons["Start"]->setText("Set start", "calibri", sf::Color::Black, 30);
+        buttons["select start node"] = new Button(0, 0, 200, 100, sf::Color(200, 200, 200));
+        buttons["select start node"]->setText("Set start", "calibri", sf::Color::Black, 30);
         
-        buttons["Goal"] = new Button(200, 0, 200, 100, sf::Color(200, 200, 200));
-        buttons["Goal"]->setText("Set goal", "calibri", sf::Color::Black, 30);
+        buttons["select goal node"] = new Button(200, 0, 200, 100, sf::Color(200, 200, 200));
+        buttons["select goal node"]->setText("Set goal", "calibri", sf::Color::Black, 30);
+
+        buttons["start pathfinding"] = new Button(1670, 0, 250, 100, sf::Color(200, 200, 200));
+        buttons["start pathfinding"]->setText("Start Pathfinding", "calibri", sf::Color::Black, 30);
     }
 
     ~UIManager() {

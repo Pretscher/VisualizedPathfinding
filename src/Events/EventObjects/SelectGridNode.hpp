@@ -38,8 +38,8 @@ public:
         && mousePos.y > grid.getScreenDimensions()[1] && mousePos.y < grid.getScreenDimensions()[1] + grid.getScreenDimensions()[3]) {
             int x = mousePos.x / gridNodeSize.x;
             int y = mousePos.y / gridNodeSize.y;
-            renderer.drawRect(x * gridNodeSize.x, grid.getScreenDimensions()[1], gridNodeSize.x, grid.getScreenDimensions()[3], sf::Color::Black);
-            renderer.drawRect(grid.getScreenDimensions()[0], y * gridNodeSize.y, grid.getScreenDimensions()[2], gridNodeSize.y, sf::Color::Black);
+            renderer.drawRect(x * gridNodeSize.x, grid.getScreenDimensions()[1], gridNodeSize.x, grid.getScreenDimensions()[3], sf::Color(0, 0, 0, 100));
+            renderer.drawRect(grid.getScreenDimensions()[0], y * gridNodeSize.y, grid.getScreenDimensions()[2], gridNodeSize.y, sf::Color(0, 0, 0, 100));
         }
     }
 

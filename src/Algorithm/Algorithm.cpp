@@ -18,7 +18,7 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	}
 
 	int graphNodeCount = graph.nodes.size();
-	BinaryHeap* heap = new BinaryHeap(graph.nodes);
+	BinaryHeap heap(graph);
 
 	//graph may have been used in a previous algorithm and we write information to it like distanceTravelled
 	//and PreviousNode, which have to be reset
@@ -30,11 +30,11 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 	startNode->setPreviousNode(startNode);
 	startNode->setDistanceTravelled(0);
 	//insert start node with the value 0
-	heap->insert(getHeuristic(startNode, goalNode), startNode->getIndexInAlgorithmGraph());
+	heap.insert(getHeuristic(startNode, goalNode), startNode->getIndexInAlgorithmGraph());
 	bool foundPath = false;
 
-	while (heap->getCurrentNodeCount() > 0) {//while heap is not empty
-		HeapNode helpNode(heap->extractMin());//extract best node
+	while (heap.getCurrentNodeCount() > 0) {//while heap is not empty
+		HeapNode helpNode(heap.extractMin());//extract best node
 		GraphNode* cNode = graph.nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
 		if (cNode == goalNode) {
 			foundPath = true;
@@ -55,21 +55,17 @@ vector<Point> Algorithm::findPath(int startX, int startY, int goalX, int goalY) 
 					cNeighbour->setPreviousNode(cNode);
 
 					float heuristicOfCurrentNeighbour = tempDistance + getHeuristic(cNeighbour, goalNode);
-
 					//if graphnode has been inserted to heap (index in heap initialized to -1)
-					if (cNeighbour->getHeapIndex() != -2) {//in that case dont insert or decrease
-						if (cNeighbour->getHeapIndex() != -1) {//-1 = not yet visited, insert
-							heap->decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
-						}
-						else {
-							heap->insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
-						}
+					if (cNeighbour->getHeapIndex() == -1) {//-1 = not yet visited, insert
+						heap.insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
+					}
+					else {
+						heap.decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
 					}
 				}
 			}
 		}
 	}
-	delete heap;
 	if (foundPath == true) {
 		vector<Point> path = retrievePath(startNode, goalNode);
 
