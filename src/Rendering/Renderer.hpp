@@ -38,35 +38,44 @@ public:
         updateMouseState();
     }
 
+    sf::Vector2i getLastFinishedLeftClick() {
+        return lastFinishedClickPos;
+    }
+
     sf::Vector2i getLastLeftClick() {
         return lastClickPos;
     }
-
-    /**
-     * @brief Every external object that wants to only be clicked once per mouseclick has to save the last clickCounter 
-    and ignore the mouse click event if the click counter is the same.
-     * 
-     * @return int 
-     */
+    
     int getClickCounter() {
         return clickCounter;
+    }
+    /**
+     * @brief Every external object that wants to only be clicked once per mouseclick has to save the last finished clickCounter
+     * @param clickCounter
+     */
+    int getFinishedClickCounter() {
+        return finishedClickCounter;
     }
 
 protected:
     void updateMouseState() {
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left) == true && clickComplete == true) { //mouse currently pressed => current click is not complete
+            finishedClickCounter = false;
             clickComplete = false;
+            clickCounter ++;
+            lastClickPos = getMousePos(true);
         }
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left) == false && clickComplete == false) {
             clickComplete = true;
-            clickCounter ++;
-            lastClickPos = getMousePos(true);//save mouse coords to last click positions
+            finishedClickCounter ++;
+            lastFinishedClickPos = getMousePos(true);//save mouse coords to last click positions
         }
     }
-    sf::Vector2i lastClickPos;
+    sf::Vector2i lastClickPos, lastFinishedClickPos;
     sf::Vector2i lastMousePos;//for if the mouse leaves the window
     bool clickComplete = true;
     int clickCounter = 0;
+    int finishedClickCounter = 0;
     virtual void transform(sf::Transformable& tranformable, float x, float y) const;
 
 

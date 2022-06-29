@@ -1,3 +1,4 @@
+#pragma once
 #include "Renderer.hpp"
 
 class Button {
@@ -15,6 +16,14 @@ public:
         return rect.getPosition().y;
     }
 
+    int getWidth() const {
+        return rect.getSize().x;
+    }
+
+    int getHeight() const {
+        return rect.getSize().y;
+    }
+
     void setX(int x) {
         rect.setPosition(sf::Vector2f(x, getY()));
     }
@@ -28,9 +37,25 @@ public:
         this->text = text; this->fontName = fontName; this->textColor = textColor; this->fontSize = fontSize;
     }
 
-    void draw(Renderer& renderer) const {
+    virtual void draw(Renderer& renderer) const {
         renderer.draw(rect);
         renderer.drawText(text, fontName, rect.getPosition().x, rect.getPosition().y, rect.getSize().x, rect.getSize().y, fontSize, textColor);
+    }
+
+    /**
+     * @brief 
+     * 
+     * @param renderer needed for mouse Events
+     */
+    virtual void update(Renderer& renderer) {
+        
+    }
+    /**
+     * @brief Can be overridden to return some derived-class specific data. Base class just returns an empty vector.
+     * 
+     */
+    virtual vector<int> getData() {
+        return {};
     }
 
     /**
@@ -40,13 +65,14 @@ public:
      * @return true 
      * @return false 
      */
-    bool isPressed(Renderer& renderer) const {
+    virtual bool isPressed(Renderer& renderer) {
         auto mousePos = renderer.getMousePos(true);
         auto pos = rect.getPosition();
         auto size = rect.getSize();
-        if(mousePos.x > pos.x && mousePos.x < pos.x + size.x 
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left) 
+            && mousePos.x > pos.x && mousePos.x < pos.x + size.x 
             && mousePos.y > pos.y && mousePos.y < pos.y + size.y
-            && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            ) {
             return true;
         }
         return false;
@@ -59,19 +85,19 @@ public:
      * @return true 
      * @return false 
      */
-    bool wasPressed(Renderer& renderer) {
-        auto mousePos = renderer.getLastLeftClick();
+    virtual bool wasPressed(Renderer& renderer) {
+        auto mousePos = renderer.getLastFinishedLeftClick();
         auto pos = rect.getPosition();
         auto size = rect.getSize();
         if(mousePos.x > pos.x && mousePos.x < pos.x + size.x 
                 && mousePos.y > pos.y && mousePos.y < pos.y + size.y
-                && lastClickedCounter != renderer.getClickCounter()) {
-            lastClickedCounter = renderer.getClickCounter();
+                && lastClickedCounter != renderer.getFinishedClickCounter()) {
+            lastClickedCounter = renderer.getFinishedClickCounter();
             return true;
         }
         return false;
     }
-private:
+protected:
     int lastClickedCounter = -1;//click counter of last click that pressed this button
     sf::RectangleShape rect;
     

@@ -1,5 +1,6 @@
 #include "Algorithm.hpp"
 #include "Binaryheap.hpp"
+#include <set>
 
 class DrawnAstar : public Algorithm {
 private:
@@ -43,7 +44,7 @@ public:
         if (foundPath == true) {
             foundPath = false;
             vector<Point> path = retrievePath(startNode, goalNode);
-            clearNeighbourDrawings();//can only be done here because for this to work a path has to have been found.
+            clearBluePathAfterFinish();
             if (path.size() == 0) {
                 cout << "\nCould not find path!-----------------------------------------------------\n\n\n";
                 return vector<Point>();
@@ -55,38 +56,40 @@ public:
         }
     }
 
-	void updatePathFinding() {
-        HeapNode helpNode(heap->extractMin());//extract best node
-        GraphNode* cNode = graph.nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
-        if (cNode == goalNode) {
-            foundPath = true;
-        }
-        const vector<GraphNode*>& cNeighbours = cNode->getNeighbours();
-        for (int i = 0; i < cNode->getNeighbours().size(); i++) {
-            float heuristics = getHeuristic(cNeighbours[i], cNode);
-            cNode->setNeighbourCosts(i, heuristics);
-        }
-        //we will look through graph->getNeighbourIndices() of this node
-        for (int i = 0; i < cNeighbours.size(); i++) {
-            GraphNode* cNeighbour = cNeighbours[i];
-            //	if (cNeighbour->isUsedByMoveable() == false) {//efficient method to exclude moveable colision objects from graph
-                float tempDistance = cNode->getDistanceTravelled() + cNode->getNeighbourCosts(i);
-                if (tempDistance < cNeighbour->getDistanceTravelled()) {
-                    cNeighbour->setDistanceTravelled(tempDistance);
-                    cNeighbour->setPreviousNode(cNode);
+	void updatePathFinding(bool actuallyDraw) {
+        if(foundPath == false) {
+            HeapNode helpNode(heap->extractMin());//extract best node
+            GraphNode* cNode = graph.nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
+            if (cNode == goalNode) {
+                foundPath = true;
+            }
+            const vector<GraphNode*>& cNeighbours = cNode->getNeighbours();
+            for (int i = 0; i < cNode->getNeighbours().size(); i++) {
+                float heuristics = getHeuristic(cNeighbours[i], cNode);
+                cNode->setNeighbourCosts(i, heuristics);
+            }
+            //we will look through graph->getNeighbourIndices() of this node
+            for (int i = 0; i < cNeighbours.size(); i++) {
+                GraphNode* cNeighbour = cNeighbours[i];
+                //	if (cNeighbour->isUsedByMoveable() == false) {//efficient method to exclude moveable colision objects from graph
+                    float tempDistance = cNode->getDistanceTravelled() + cNode->getNeighbourCosts(i);
+                    if (tempDistance < cNeighbour->getDistanceTravelled()) {
+                        cNeighbour->setDistanceTravelled(tempDistance);
+                        cNeighbour->setPreviousNode(cNode);
 
-                    float heuristicOfCurrentNeighbour = tempDistance + getHeuristic(cNeighbour, goalNode);
-                    //if graphnode has been inserted to heap (index in heap initialized to -1)
-                    if (cNeighbour->getHeapIndex() == -1) {//-1 = not yet visited, insert
-                        heap->insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
+                        float heuristicOfCurrentNeighbour = tempDistance + getHeuristic(cNeighbour, goalNode);
+                        //if graphnode has been inserted to heap (index in heap initialized to -1)
+                        if (cNeighbour->getHeapIndex() == -1) {//-1 = not yet visited, insert
+                            heap->insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
+                        }
+                        else {
+                            heap->decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
+                        }
                     }
-                    else {
-                        heap->decrease(cNeighbour->getHeapIndex(), heuristicOfCurrentNeighbour);
-                    }
-                }
-        //	}
+            //	}
+            }
+            drawAll(cNode, cNeighbours, actuallyDraw);
         }
-        drawAllAndSleep(cNode, cNeighbours);        
     }
     /**
      * @brief Clear marks of previously visualized Algorithm steps. This is done before a new pathfinding is started.
@@ -94,82 +97,56 @@ public:
      * 
      */
     void clearDrawings() {
-        for(Point p : heapPixelsToClear) {
+        for(Point p : oldPathPoints) {
             grid.setPixel(p.x, p.y, sf::Color::White);
         }
-        heapPixelsToClear.clear();
-        for(vector<Point> path : pathsToDraw) {
-            for(Point p : path) {
-                grid.setPixel(p.x, p.y, sf::Color::White);
-            }
-            path.clear();
-        }
-        pathsToDraw.clear();
-        lastHeapPixel = Point();
+        oldPathPoints.clear();
     }
 
 private:
     int sleep = 15;
-    vector<vector<Point>> pathsToDraw;
-    vector<Point> neighbourPixelsToClear;
-    vector<Point> heapPixelsToClear;//cleared when new path is asked to be found or called
-    Point lastHeapPixel;
 
-    void drawAllAndSleep(const GraphNode* const cNode, const vector<GraphNode*>& cNeighbours) {
-        clearLastFrame();
+    struct comparator {
+        bool operator() (Point a, Point b) const {
+            return a.x < b.x || (a.x == b.x && a.y < b.y);
+        }
+    };
+    //we use a set here because we will insert Points multiple times and it would be inefficient to avoid doing that.
+    set<Point, comparator> oldPathPoints;
+    vector<Point> lastPath;
+
+    void drawAll(const GraphNode* const cNode, const vector<GraphNode*>& cNeighbours, bool actuallyDraw = true) {
         //draw abandoned paths
         int counter = 0;
-        for(int i = 0; i < pathsToDraw.size(); i++) {
-            for(Point p : pathsToDraw[i]) {
-                grid.setPixel(p.x, p.y, sf::Color(0, 255, 0, 100));
+        if(actuallyDraw == true) {
+            for(Point p : oldPathPoints) {
+                grid.setPixel(p.x, p.y,  sf::Color(0, 255, 0, 100));
             }
-        }
-
-        //draw path that led to above node
-        //while we haven't reached the start node, always terminates because a node cannot be in heap if the previousnodes dont lead to the startnode
-        const GraphNode* iteratorNode = cNode->getPreviousNode(); 
-        vector<Point> cPath;
-        while (true) {
-            grid.setPixel(iteratorNode->getX(), iteratorNode->getY(), sf::Color(0, 0, 255, 200));
-            cPath.push_back(Point(iteratorNode->getX(), iteratorNode->getY()));
-            if(iteratorNode == startNode) {//has to be in the middle of the while loop because we want to draw the startNode before leaving the loop
-                break;
-            }
-            iteratorNode = iteratorNode->getPreviousNode();
-        }
-        pathsToDraw.push_back(move(cPath));
         
-
-        //draw currently viewed neighbours
-        for(GraphNode* cNeighbour : cNeighbours) {
-            grid.setPixel(cNeighbour->getX(), cNeighbour->getY(), sf::Color::Blue);
-            neighbourPixelsToClear.push_back(Point(cNeighbour->getX(), cNeighbour->getY()));
+            //draw path that led to above node
+            //while we haven't reached the start node, always terminates because a node cannot be in heap if the previousnodes dont lead to the startnode
+            const GraphNode* iteratorNode = cNode->getPreviousNode(); 
+            lastPath.clear();
+            while (true) {
+                grid.setPixel(iteratorNode->getX(), iteratorNode->getY(), sf::Color(0, 0, 255, 200));
+                lastPath.push_back(Point(iteratorNode->getX(), iteratorNode->getY()));
+                oldPathPoints.insert(Point(iteratorNode->getX(), iteratorNode->getY()));
+                if(iteratorNode == startNode) {//has to be in the middle of the while loop because we want to draw the startNode before leaving the loop
+                    break;
+                }
+                iteratorNode = iteratorNode->getPreviousNode();
+            }
         }
-
-        //draw node extracted from heap ("current best option")
-        grid.setPixel(cNode->getX(), cNode->getY(), sf::Color::Red);
-        lastHeapPixel = Point(cNode->getX(), cNode->getY());
-
-        //std::this_thread::sleep_for(std::chrono::milliseconds(sleep));
     }
 
-    void clearLastFrame() {
-        for(Point p : neighbourPixelsToClear) {
+    void clearBluePathAfterFinish() {
+        for(Point p : oldPathPoints) {
             grid.setPixel(p.x, p.y, sf::Color::White);
         }
-        if(lastHeapPixel.x != -1) {//is not initialized in first iteration, but default constructor is initialized to (-1, -1)
-            grid.setPixel(lastHeapPixel.x, lastHeapPixel.y, sf::Color::White);
-            heapPixelsToClear.push_back(Point(lastHeapPixel.x, lastHeapPixel.y));
-        }
-        neighbourPixelsToClear.clear();
-    }
-
-    void clearNeighbourDrawings() {
-        //draw currently viewed neighbours
-        for(GraphNode* cNeighbour : goalNode->getNeighbours()) {
-            grid.setPixel(cNeighbour->getX(), cNeighbour->getY(), sf::Color::White);
+        //redraw green paths because they should be shown
+        for(Point p : oldPathPoints) {
+            grid.setPixel(p.x, p.y,  sf::Color(0, 255, 0, 100));
         }
     }
-
     Grid& grid;
 };

@@ -25,10 +25,23 @@ public:
         }
     }
 
-    void drawPath() {
+    /**
+     * @brief For efficiency if you want to skip frames
+     * 
+     */
+    void updatePathAnimationWithoutDrawing() {
         if(drawingPath == true) {
-            drawnAstar.updatePathFinding();
+            drawnAstar.updatePathFinding(false);
         }
+    }
+
+    void updatePathAnimation() {
+        if(drawingPath == true) {
+            drawnAstar.updatePathFinding(true);
+        }
+    }
+
+    void drawPath() {
         //if path was changed, erase last path and insert new path
         if(changedPaths == true) {
             removePathFromGrid(lastPath);

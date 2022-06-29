@@ -1,5 +1,6 @@
 #include "Renderer.hpp"
 #include "Button.hpp"
+#include "DragableButton.hpp"
 #include <memory>
 #include <map>
 
@@ -18,6 +19,9 @@ public:
 
         buttons["start pathfinding"] = new Button(1670, 0, 250, 100, sf::Color(200, 200, 200));
         buttons["start pathfinding"]->setText("Start Pathfinding", "calibri", sf::Color::Black, 30);
+
+        buttons["speed"] = new DragableButton(15, 14, 1200, 0, 250, 100, sf::Color(200, 200, 200));
+        buttons["speed"]->setText("Speed", "calibri", sf::Color::Black, 30);
     }
 
     ~UIManager() {
@@ -32,7 +36,9 @@ public:
     }
 
     void update() {
-
+        for (auto const& entry : buttons) {
+            entry.second->update(renderer);
+        }
     }
 
     void draw() {

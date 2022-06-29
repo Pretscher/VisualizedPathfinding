@@ -322,6 +322,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Events\UIManager.hpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\Button.hpp" />
+    <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\DragableButton.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\Renderer.cpp" />
     <ClInclude Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\Renderer.hpp" />
     <ClCompile Include="C:\Users\Julian\source\repos\Pretscher\VisualizedPathfinding\src\Rendering\VsRenderer.cpp" />

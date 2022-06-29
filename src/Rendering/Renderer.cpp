@@ -5,7 +5,7 @@
 //Call this-----------------------------------------------------------------------------------------------------------
 
 Renderer::Renderer(sf::RenderWindow& window) : currentWindow(window) {
-     xPixels = currentWindow.getSize().x;
+    xPixels = currentWindow.getSize().x;
     yPixels = currentWindow.getSize().y;
     currentWindow.setFramerateLimit(60);
 }

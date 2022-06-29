@@ -7,12 +7,15 @@
 #include <map>
 
 class EventManager {
-public:
-    //Memory of this object has to be externally managed.
+private:
     Renderer& renderer;
     UIManager uiManager;
     WorldManager worldManager;
     PathfindingManager pathfindingManager;
+    int speed = 60;
+    int speedCounter = 0;
+public:
+
     EventManager(Renderer& i_renderer) : renderer(i_renderer),
             uiManager(renderer),
             worldManager(Grid(192, 108, uiManager.getGridScreenSpace(), sf::Color::White, renderer)),
@@ -66,8 +69,20 @@ public:
                 cEvent++;
             }
         }
-
         pathfindingManager.update();
+
+        if(speed < 120) {
+            speedCounter += speed / 16;
+            if(speedCounter > 120 - speed) {//no slowing down if at 60, else slowing down linearly
+                speedCounter = 0;
+                pathfindingManager.updatePathAnimation();//if there is a path, draw it
+            }
+        } else {
+            for(int i = 0; i < speed / 16; i++) {
+                pathfindingManager.updatePathAnimationWithoutDrawing();
+            }
+            pathfindingManager.updatePathAnimation();
+        }
     }
 
     void handleEventStarts() {
@@ -80,6 +95,7 @@ public:
         if(uiManager.buttons["start pathfinding"]->wasPressed(renderer)) {
             pathfindingManager.tryFindingPath();
         }
+        speed = uiManager.buttons["speed"]->getData()[0] * 16; //value between 0 and 15 => speed between 0 and 60
     }
 
 
@@ -98,6 +114,7 @@ public:
         for(auto const& cEvent : events) {
             cEvent.second->draw();
         }
+
         pathfindingManager.drawPath();//if there is a path, draw it
     }
 };

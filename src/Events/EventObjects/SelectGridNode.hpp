@@ -2,12 +2,12 @@
 class SelectGridNode : public Event {
 public:
     SelectGridNode(Renderer& i_renderer, Grid& i_grid) : Event(i_renderer), grid(i_grid) {
-        initialClickCounter = i_renderer.getClickCounter();
+        initialClickCounter = i_renderer.getFinishedClickCounter();
     }
 
     void update() override {
-        if(initialClickCounter != renderer.getClickCounter()) {
-            auto pos = renderer.getLastLeftClick();
+        if(initialClickCounter != renderer.getFinishedClickCounter()) {
+            auto pos = renderer.getLastFinishedLeftClick();
             auto dimensions = grid.getScreenDimensions();//[0] := xOffset, [1] := yOffset, [2] := width, [3] := height
             auto gridNodeSize = grid.getNodeSize();
             //if click is actually in gird
@@ -23,7 +23,7 @@ public:
                     selectedNodeY = y;
                 } else {
                     cout << "Selected Node must be non-black. \n";
-                    initialClickCounter = renderer.getClickCounter();//wait for next click
+                    initialClickCounter = renderer.getFinishedClickCounter();//wait for next click
                 }
             }
         }
