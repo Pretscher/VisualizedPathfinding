@@ -90,11 +90,19 @@ private:
         }
         newIndex = nodeIndex - width - 1;
         if(node->getX() > 0 && newIndex >= 0) {
-            trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
+            //prevent diagonal links if there is a line of nodes between the two nodes to link
+            if(fullGraph[newIndex + 1] != nullptr//above node, right to newnode
+            && fullGraph[nodeIndex - 1] != nullptr) {//left to node, under newnode
+                trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
+            }
         }
         newIndex = nodeIndex - width + 1;
         if(newIndex >= 0 && ((newIndex / width) == ((nodeIndex / width) - 1))) {//check if not in the same row
-            trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
+            //prevent diagonal links if there is a line of nodes between the two nodes to link
+            if(fullGraph[newIndex - 1] != nullptr//above node, left to newnode
+            && fullGraph[nodeIndex + 1] != nullptr) {//right to node, under newnode
+                trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
+            }
         }
     }
 
