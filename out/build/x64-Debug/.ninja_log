@@ -1,9 +1,0 @@
-# ninja log v5
-1	138	6777034361650413	build.ninja	a303e65aebe1c90a
-3	134	6777025556243964	CMakeFiles/VisualizedPathfinding.dir/src/Events/UIManager.cpp.obj	187f8a413bf576b4
-5	490	6777025559784759	CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/BinaryHeap.cpp.obj	1cc57346462d359a
-1	476	6777029856677926	CMakeFiles/VisualizedPathfinding.dir/src/Algorithm/Algorithm.cpp.obj	69570ef3d2605069
-8	425	6777025559144626	CMakeFiles/VisualizedPathfinding.dir/src/Rendering/VsRenderer.cpp.obj	213d1810029732ca
-7	532	6777025560194853	CMakeFiles/VisualizedPathfinding.dir/src/Events/Main.cpp.obj	84bce8cc03267d05
-10	443	6777025559294659	CMakeFiles/VisualizedPathfinding.dir/src/Rendering/Renderer.cpp.obj	d516d5555224d5fa
-476	592	6777029857648143	VisualizedPathfinding.exe	1512e1baf1246158

@@ -80,6 +80,9 @@ void Renderer::drawLine(int x1, int y1, int x2, int y2, sf::Color c, int thickne
  */
  sf::Vector2i Renderer::getMousePos(bool factorInBorders) {
     auto pos = sf::Mouse::getPosition(currentWindow);
+    //although SFML handles resizing for us, it somehow does not handle the mouse position after a resize properly.
+    pos.x = xPixels * pos.x / currentWindow.getSize().x;//xPixels is the initial size of the window, which is used by SFML to scale the window.
+    pos.y = yPixels * pos.y / currentWindow.getSize().y;
 
     if (factorInBorders == true) {
         if (pos.x < xPixels && pos.y < yPixels) {

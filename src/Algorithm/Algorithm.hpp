@@ -27,6 +27,6 @@ public:
 	vector<Point> findPath(int startX, int startY, int goalX, int goalY);
 protected:
 	Graph graph;
-	inline float getHeuristic(GraphNode* start, GraphNode* goal);
+	float getHeuristic(GraphNode* start, GraphNode* goal);
 	vector<Point> retrievePath(GraphNode* startNode, GraphNode* goalNode);
 };
