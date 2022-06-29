@@ -103,6 +103,8 @@ vector<Point> Algorithm::retrievePath(GraphNode* startNode, GraphNode* goalNode)
 		}
 		cNode = cNode->getPreviousNode();
 	}
+	path[0].x = startNode->getX();
+	path[0].y = startNode->getY();
 	//we want the path to start at the start node, not the goal node
 	return path;
 }

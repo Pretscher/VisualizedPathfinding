@@ -7,7 +7,7 @@ private:
     Graph graph;
 public:
     WorldManager(Grid i_grid) : grid(i_grid) {
-        createTestGrid(10);
+        createTestGrid(2);
         graph.generateFromGrid(grid);
     }
 

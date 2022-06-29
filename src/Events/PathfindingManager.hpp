@@ -12,15 +12,13 @@ public:
 
     void update() {
         if(drawingPath == true) {
-            if(drawnAstar.isPathFound() == true) {
+            int exitState = drawnAstar.getExitState();
+            if(exitState == 0) {
                 drawingPath = false;
                 auto path = drawnAstar.tryRetrievingPath();
-                if(path.size() == 0) {
-                    return;
-                }
-                else {
-                    swapPaths(path);//from here on out the path is drawn in drawPath()
-                }
+                swapPaths(path);//from here on out the path is drawn in drawPath()
+            } else if(exitState == -1) {
+                drawingPath = false;
             }
         }
     }

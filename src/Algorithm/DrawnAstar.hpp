@@ -8,7 +8,7 @@ private:
     GraphNode* goalNode;
     int graphNodeCount;
     BinaryHeap* heap;
-    bool foundPath = false;
+    bool finished = false;
 public:
   
     void initPathfinding(int startX, int startY, int goalX, int goalY) {
@@ -29,20 +29,23 @@ public:
         startNode->setDistanceTravelled(0);
         //insert start node with the value 0
         heap->insert(getHeuristic(startNode, goalNode), startNode->getIndexInAlgorithmGraph());
-        bool foundPath = false;
+        finished = false;
+        noPathFound = false;
     }
 
 	DrawnAstar(Graph& i_graph, Grid& i_grid) : Algorithm (i_graph), grid(i_grid) {
 
 	}
 
-    bool isPathFound() {
-        return foundPath;
+    int getExitState() {
+        if(noPathFound == true) return -1;//no path found
+        if(finished == false) return 1;//didnt finish yet
+        return 0;//finished successfully
     }
 
     vector<Point> tryRetrievingPath() {
-        if (foundPath == true) {
-            foundPath = false;
+        if (finished == true && noPathFound == false) {
+            finished = false;
             vector<Point> path = retrievePath(startNode, goalNode);
             clearBluePathAfterFinish();
             if (path.size() == 0) {
@@ -51,17 +54,24 @@ public:
             }
             return path;
         } else {
-            cout << "\nPath not found yet!-----------------------------------------------------\n\n\n";
+            cout << "\nPath not found-----------------------------------------------------\n\n\n";
             return vector<Point>();
         }
     }
 
 	void updatePathFinding(bool actuallyDraw) {
-        if(foundPath == false) {
+        if(finished == false) {
+            if(heap->getCurrentNodeCount() == 0) {
+                cout << "\nNo path found!-----------------------------------------------------\n\n\n";
+                finished = true;
+                clearBluePathAfterFinish();
+                noPathFound = true;
+                return;
+            }
             HeapNode helpNode(heap->extractMin());//extract best node
             GraphNode* cNode = graph.nodes[helpNode.getIndexInGraph()];//get graphIndex of best node
             if (cNode == goalNode) {
-                foundPath = true;
+                finished = true;
             }
             const vector<GraphNode*>& cNeighbours = cNode->getNeighbours();
             for (int i = 0; i < cNode->getNeighbours().size(); i++) {
@@ -80,6 +90,7 @@ public:
                         float heuristicOfCurrentNeighbour = tempDistance + getHeuristic(cNeighbour, goalNode);
                         //if graphnode has been inserted to heap (index in heap initialized to -1)
                         if (cNeighbour->getHeapIndex() == -1) {//-1 = not yet visited, insert
+
                             heap->insert(heuristicOfCurrentNeighbour, cNeighbour->getIndexInAlgorithmGraph());
                         }
                         else {
@@ -104,6 +115,7 @@ public:
     }
 
 private:
+    bool noPathFound = false;
     int sleep = 15;
 
     struct comparator {

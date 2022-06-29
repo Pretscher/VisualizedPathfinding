@@ -80,17 +80,21 @@ public:
 private:
     inline void linkNeighbours(GraphNode* node) {
         int nodeIndex = node->getIndexInFullGraph();
-        if(node->getX() > 0 && nodeIndex - 1 >= 0) {
-            trylinkingGraphNodes(node, fullGraph[nodeIndex - 1]);//left
+        int newIndex =  nodeIndex - 1;
+        if(node->getX() > 0 && newIndex >= 0) {
+            trylinkingGraphNodes(node, fullGraph[newIndex]);//left
         }
-        if(nodeIndex - width >= 0) {
-            trylinkingGraphNodes(node, fullGraph[nodeIndex - width]);//top
+        newIndex = nodeIndex - width;
+        if(node->getX() > 0 && newIndex >= 0) {
+            trylinkingGraphNodes(node, fullGraph[newIndex]);//top
         }
-        if(node->getX() > 0 && nodeIndex - width - 1 >= 0) {
-            trylinkingGraphNodes(node, fullGraph[nodeIndex - width - 1]);//top left
+        newIndex = nodeIndex - width - 1;
+        if(node->getX() > 0 && newIndex >= 0) {
+            trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
         }
-        if(node->getX() > 0 && nodeIndex - width + 1 >= 0 && ((nodeIndex - width + 1) % height != nodeIndex % height)) {//check if in the same row
-            trylinkingGraphNodes(node, fullGraph[nodeIndex - width + 1]);//top left
+        newIndex = nodeIndex - width + 1;
+        if(newIndex >= 0 && ((newIndex / width) == ((nodeIndex / width) - 1))) {//check if not in the same row
+            trylinkingGraphNodes(node, fullGraph[newIndex]);//top left
         }
     }
 
