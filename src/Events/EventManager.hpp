@@ -14,6 +14,7 @@ private:
     PathfindingManager pathfindingManager;
     int speed = 60;
     int speedCounter = 0;
+    int lastGridSize = 10;
 public:
 
     EventManager(Renderer& i_renderer) : renderer(i_renderer),
@@ -96,6 +97,12 @@ public:
             pathfindingManager.tryFindingPath();
         }
         speed = uiManager.buttons["speed"]->getData()[0] * 16; //value between 0 and 15 => speed between 0 and 60
+        
+        int temp = uiManager.buttons["gridsize"]->getData()[0];//value between 0 and 20
+        if(lastGridSize != temp) {
+            lastGridSize = temp;
+            worldManager.getGrid().resize(192 * ((float)temp / 10), 108 * ((float)temp / 10));//allow double the size of 192, 108
+        }
     }
 
 

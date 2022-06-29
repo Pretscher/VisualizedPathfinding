@@ -22,7 +22,10 @@ public:
 
         buttons["speed"] = new DragableButton(15, 14, 1200, 0, 250, 100, sf::Color(200, 200, 200));
         buttons["speed"]->setText("Speed", "calibri", sf::Color::Black, 30);
-    }
+        
+        buttons["gridsize"] = new DragableButton(20, 10, 900, 0, 250, 100, sf::Color(200, 200, 200));
+        buttons["gridsize"]->setText("Grid Size", "calibri", sf::Color::Black, 30);
+        }
 
     ~UIManager() {
         //delete Button pointers

@@ -6,6 +6,8 @@ private:
     int cols, rows;
     sf::Color defaultColor;
     vector<int> screenDimensions;
+    vector<sf::RectangleShape> maxSizeOldGrid;
+    int maxSizeOldRows = 0, maxSizeOldCols = 0;
     Renderer& renderer;
 public:
     //create plain colored grid
@@ -86,6 +88,62 @@ public:
     sf::RectangleShape& getNode(int col, int row) {
         return nodes[row * cols + col];
     }
+
+    void randomlyGenerate(int randomDegree) {
+        for(int y = 0; y < rows; y ++) {
+            for(int x = 0; x < cols; x ++) {
+                int random_variable = std::rand() % randomDegree;         
+                if(random_variable == 0) {
+                    setPixel(x, y, sf::Color::Black);
+                }
+            }
+        }
+    }
+
+    void setBiggestOldGrid(vector<sf::RectangleShape> oldNodes) {
+        maxSizeOldGrid = oldNodes;
+        maxSizeOldRows = rows;
+        maxSizeOldCols = cols;
+    }
+
+    inline void resize(int rows, int cols) {
+        int oldCols = this->cols;
+        int oldRows = this->rows;
+        if(maxSizeOldGrid.size() == 0) {
+            setBiggestOldGrid(nodes);
+        }
+
+        vector<sf::RectangleShape> newNodes;
+        newNodes.reserve(cols * rows);
+
+        float nodeWidth = (float) screenDimensions[2] / cols;
+        float nodeHeight = (float) screenDimensions[3] / rows;
+        for(int y = 0; y < rows; y ++) {
+            for(int x = 0; x < cols; x++) {
+                float nodeX = screenDimensions[0] + x * nodeWidth;
+                float nodeY = screenDimensions[1] + y * nodeHeight;
+
+                sf::RectangleShape node = renderer.createRect(nodeX, nodeY, nodeWidth, nodeHeight, defaultColor);
+                if(y < maxSizeOldRows && x < maxSizeOldCols) {
+                    node.setFillColor(maxSizeOldGrid[y * maxSizeOldCols + x].getFillColor());
+                }
+                newNodes.push_back(move(node));
+            }
+        }
+        //save max precision grid for the case that it's scaled up again after being scaled down (we want to preserve the nodes)
+        if(nodes.size() > maxSizeOldGrid.size()) {
+            setBiggestOldGrid(move(nodes));
+        }
+        else {
+            nodes.clear();
+        }
+        nodes = move(newNodes);
+
+        this->cols = cols;
+        this->rows = rows;
+    }
+
+
 
 private:
     int nonWhiteCount = 0;
